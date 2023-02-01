@@ -1,5 +1,5 @@
 require("dotenv").config();
-const client = require("../../client");
+const client = require("../client");
 
 async function deleteTables() {
   await client.query(`
@@ -26,6 +26,7 @@ async function createTables() {
     "firstName" VARCHAR(255) NOT NULL,
     "lastInitial" VARCHAR(255),
     "readingLevel" INTEGER,
+    "schoolYear" VARCHAR(255) NOT NULL,
     "teacherId" INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
     `);
