@@ -1,0 +1,23 @@
+{
+  "name": "galaxy-progress-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mctyles/galaxy_progress_tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mctyles/galaxy_progress_tracker/issues"
+  },
+  "homepage": "https://github.com/mctyles/galaxy_progress_tracker#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
