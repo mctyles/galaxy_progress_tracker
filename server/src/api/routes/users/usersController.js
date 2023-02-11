@@ -24,3 +24,5 @@ async function register(req, res, next) {
     console.error(error);
   }
 }
+
+module.exports = { register };
