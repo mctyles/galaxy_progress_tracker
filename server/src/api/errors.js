@@ -5,4 +5,11 @@ function userAlreadyExistsError(username) {
   };
 }
 
-module.exports = { userAlreadyExistsError };
+function invalidPasswordError(username) {
+  return {
+    name: "invalidPasswordError",
+    message: `Invalid password for user ${username}`,
+  };
+}
+
+module.exports = { userAlreadyExistsError, invalidPasswordError };

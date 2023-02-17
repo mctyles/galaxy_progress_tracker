@@ -3,7 +3,11 @@ const {
   getUserByUsername,
 } = require("../../../db/adapters/usersAdapter");
 const jwt = require("jsonwebtoken");
-const { userAlreadyExistsError } = require("../../errors");
+const {
+  userAlreadyExistsError,
+  invalidPasswordError,
+} = require("../../errors");
+const { validatePassword } = require("./usersSecurity");
 const { JWT_SECRET } = process.env;
 
 async function register(req, res, next) {
@@ -25,4 +29,25 @@ async function register(req, res, next) {
   }
 }
 
-module.exports = { register };
+async function login(req, res, next) {
+  try {
+    const { username, password } = req.body;
+
+    const { password: hashedPassword, ...user } = await getUserByUsername(
+      username
+    );
+
+    const validPassword = await validatePassword(password, hashedPassword);
+
+    if (validPassword) {
+      const token = jwt.sign(user, JWT_SECRET);
+      res.json({ user, token });
+    } else {
+      return next(invalidPasswordError(username));
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = { register, login };
