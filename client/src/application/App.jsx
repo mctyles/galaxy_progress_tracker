@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import FormButton from "../components/FormButton";
+import Navbar from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
 import UserAuthenticationForm from "../routes/auth/UserAuthenticationForm";
 import "./App.css";
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <UserProvider>
+          <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route

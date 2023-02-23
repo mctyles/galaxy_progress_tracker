@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <h1>
         Welcome to the Galaxy Progress Tracker
-        {user && `, ${user.user.username}`}
+        {user && `, ${user.user.username}`}!
       </h1>
     </main>
   );
