@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FormButton from "../../components/FormButton";
 import FormInput from "../../components/FormInput";
 import { UserContext } from "../../context/UserContext";
@@ -14,6 +14,8 @@ export default function UserAuthenticationForm() {
   const { authType } = useParams();
   const { setUser } = useContext(UserContext);
 
+  const navigate = useNavigate();
+
   return (
     <form
       onSubmit={(event) =>
@@ -24,7 +26,8 @@ export default function UserAuthenticationForm() {
           username,
           password,
           authType,
-          setUser
+          setUser,
+          navigate
         )
       }
     >

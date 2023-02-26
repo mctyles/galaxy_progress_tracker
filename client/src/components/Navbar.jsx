@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import SignOutLink from "../routes/auth/SignOutLink";
 import NavLink from "./NavLink";
 
 export default function Navbar() {
@@ -23,10 +23,10 @@ export default function Navbar() {
     <nav>
       <ul>
         {navLinks.map((link, idx) => {
-          return (
-            <NavLink key={idx} path={link.path} linkName={link.linkName} />
-          );
+          const { path, linkName } = link;
+          return <NavLink key={idx} path={path} linkName={linkName} />;
         })}
+        {user && <SignOutLink />}
       </ul>
     </nav>
   );

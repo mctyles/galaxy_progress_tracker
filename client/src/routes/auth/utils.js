@@ -7,7 +7,8 @@ export const handleSubmit = async (
   username,
   password,
   authType,
-  setUser
+  setUser,
+  navigate
 ) => {
   event.preventDefault();
   let user = null;
@@ -21,7 +22,14 @@ export const handleSubmit = async (
   if (user) {
     setUser(user);
     window.localStorage.setItem("user", JSON.stringify(user));
+    navigate("/");
   }
 
   return;
+};
+
+export const handleSignOut = (setUser, navigate) => {
+  window.localStorage.removeItem("user");
+  setUser(null);
+  navigate("/");
 };

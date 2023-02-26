@@ -1,7 +1,7 @@
 const client = require("../client");
 const bcrypt = require("bcrypt");
 
-async function getUserByUsername(username) {
+export const getUserByUsername = async (username) => {
   const {
     rows: [user],
   } = await client.query(
@@ -13,9 +13,23 @@ async function getUserByUsername(username) {
   );
 
   return user;
-}
+};
 
-async function createUser(firstName, lastName, username, password) {
+const getUserById = async (userId) => {
+  const {
+    rows: [user],
+  } = await client.query(
+    `
+    SELECT * FROM users
+    WHERE id=$1;
+    `,
+    [userId]
+  );
+
+  return user;
+};
+
+const createUser = async (firstName, lastName, username, password) => {
   const encryptedPass = await bcrypt.hash(password, 10);
 
   const {
@@ -30,6 +44,6 @@ async function createUser(firstName, lastName, username, password) {
   );
 
   return user;
-}
+};
 
-module.exports = { createUser, getUserByUsername };
+module.exports = { createUser, getUserByUsername, getUserById };

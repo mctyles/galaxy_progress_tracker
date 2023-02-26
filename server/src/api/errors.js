@@ -12,4 +12,15 @@ function invalidPasswordError(username) {
   };
 }
 
-module.exports = { userAlreadyExistsError, invalidPasswordError };
+function noStudentDataError(username) {
+  return {
+    name: "noStudentDataError",
+    message: `No student data found for user ${username}.`,
+  };
+}
+
+module.exports = {
+  userAlreadyExistsError,
+  invalidPasswordError,
+  noStudentDataError,
+};
