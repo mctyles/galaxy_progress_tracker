@@ -1,4 +1,6 @@
 require("dotenv").config();
+const { createStudent } = require("../adapters/studentsAdapter");
+const { createUser } = require("../adapters/usersAdapter");
 const client = require("../client");
 
 async function deleteTables() {
@@ -68,6 +70,18 @@ async function seed() {
     await deleteTables();
     console.log("Creating tables...");
     await createTables();
+    await createUser({
+      username: "tigerclaw",
+      firstName: "Tyler",
+      lastName: "McMu",
+      password: "password",
+    });
+    await createStudent({
+      firstName: "Billy",
+      lastInitial: "P.",
+      teacherId: 1,
+      schoolYear: "2022-23",
+    });
   } catch (error) {
     console.error(error);
   } finally {

@@ -20,7 +20,7 @@ async function register(req, res, next) {
       return next(userAlreadyExistsError(username));
     }
 
-    const user = await createUser(firstName, lastName, username, password);
+    const user = await createUser({ firstName, lastName, username, password });
     const token = jwt.sign(user, JWT_SECRET);
 
     res.json({ user, token });

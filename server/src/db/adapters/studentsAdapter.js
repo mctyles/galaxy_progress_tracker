@@ -16,17 +16,19 @@ const getAllStudentsByTeacher = async (teacherId) => {
   return students;
 };
 
-const createStudent = async (student) => {
+const createStudent = async (studentObj) => {
   const {
     rows: [student],
   } = await client.query(
     `
-    INSERT INTO students (${generateInsertColumns(student)})
-    VALUES (${generateInsertValues(student)})
+    INSERT INTO students (${generateInsertColumns(studentObj)})
+    VALUES (${generateInsertValues(studentObj)})
     RETURNING *;
     `,
-    Object.values(student)
+    Object.values(studentObj)
   );
+
+  return student;
 };
 
 module.exports = { getAllStudentsByTeacher, createStudent };

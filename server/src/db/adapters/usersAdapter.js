@@ -1,7 +1,7 @@
 const client = require("../client");
 const bcrypt = require("bcrypt");
 
-export const getUserByUsername = async (username) => {
+const getUserByUsername = async (username) => {
   const {
     rows: [user],
   } = await client.query(
@@ -29,7 +29,7 @@ const getUserById = async (userId) => {
   return user;
 };
 
-const createUser = async (firstName, lastName, username, password) => {
+const createUser = async ({ firstName, lastName, username, password }) => {
   const encryptedPass = await bcrypt.hash(password, 10);
 
   const {
@@ -46,4 +46,4 @@ const createUser = async (firstName, lastName, username, password) => {
   return user;
 };
 
-module.exports = { createUser, getUserByUsername, getUserById };
+module.exports = { getUserByUsername, getUserById, createUser };

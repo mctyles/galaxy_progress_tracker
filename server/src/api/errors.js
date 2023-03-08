@@ -19,8 +19,16 @@ function noStudentDataError(username) {
   };
 }
 
+function authenticationRequiredError() {
+  return {
+    name: "authenticationRequiredError",
+    message: `You must be logged in to perform this action.`,
+  };
+}
+
 module.exports = {
   userAlreadyExistsError,
   invalidPasswordError,
   noStudentDataError,
+  authenticationRequiredError,
 };
