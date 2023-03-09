@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const loggedInNavLinks = [
     { path: "/", linkName: "Home" },
-    { path: `/me/${user?.user.id}/students`, linkName: "My Students" },
+    { path: `me/students`, linkName: "Students" },
     { path: "/me/profile", linkName: "Your Profile" },
   ];
 
