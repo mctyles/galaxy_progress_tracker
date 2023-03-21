@@ -9,7 +9,10 @@ export default function useStudentsList() {
   useEffect(() => {
     const getStudents = async () => {
       const studentsList = await fetchStudents(user?.token);
-      setStudents(studentsList);
+      if (studentsList && studentsList.length) {
+        setStudents(studentsList);
+      }
+      return;
     };
     getStudents();
   }, []);
