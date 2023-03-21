@@ -1,8 +1,9 @@
 const {
   getAllStudentsByTeacher,
+  createStudent,
 } = require("../../../db/adapters/studentsAdapter");
 const { getUserById } = require("../../../db/adapters/usersAdapter");
-const { noStudentDataError } = require("../../errors");
+const { noStudentDataError, addStudentError } = require("../../errors");
 
 const getStudentsByTeacherId = async (req, res, next) => {
   try {
@@ -21,4 +22,18 @@ const getStudentsByTeacherId = async (req, res, next) => {
   }
 };
 
-module.exports = { getStudentsByTeacherId };
+const createNewStudent = async (req, res, next) => {
+  try {
+    const studentData = req.body;
+    const { newStudent } = await createStudent(studentData);
+
+    if (!students) {
+      return next(addStudentError());
+    }
+
+    res.json(newStudent);
+  } catch (error) {
+    console.error(error);
+  }
+};
+module.exports = { getStudentsByTeacherId, createNewStudent };

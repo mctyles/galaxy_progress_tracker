@@ -4,6 +4,7 @@ import FormButton from "../components/FormButton";
 import Navbar from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
 import UserAuthenticationForm from "../routes/auth/UserAuthenticationForm";
+import AddStudentForm from "../routes/students/AddStudentForm";
 import StudentsPage from "../routes/students/StudentsPage";
 import "./App.css";
 import Home from "./Home";
@@ -21,6 +22,7 @@ function App() {
               path="users/:authType"
             />
             <Route element={<StudentsPage />} path="me/students" />
+            <Route element={<AddStudentForm />} path="me/students/add" />
           </Routes>
         </UserProvider>
       </div>

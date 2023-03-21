@@ -19,6 +19,13 @@ function noStudentDataError(username) {
   };
 }
 
+function addStudentError() {
+  return {
+    name: "addStudentError",
+    message: `There was an error adding this student to the roster.`,
+  };
+}
+
 function authenticationRequiredError() {
   return {
     name: "authenticationRequiredError",
@@ -31,4 +38,5 @@ module.exports = {
   invalidPasswordError,
   noStudentDataError,
   authenticationRequiredError,
+  addStudentError,
 };
