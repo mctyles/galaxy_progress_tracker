@@ -1,4 +1,6 @@
 require("dotenv").config();
+const { createAssignment } = require("../adapters/assignmentsAdapter");
+const { createCategory } = require("../adapters/categoriesAdapter");
 const { createStudent } = require("../adapters/studentsAdapter");
 const { createUser } = require("../adapters/usersAdapter");
 const client = require("../client");
@@ -47,7 +49,8 @@ async function createTables() {
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     "totalPoints" INTEGER,
-    "categoryId" INTEGER REFERENCES categories(id) ON DELETE CASCADE
+    "categoryId" INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+    "teacherId" INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
     `);
 
@@ -81,6 +84,20 @@ async function seed() {
       lastInitial: "P.",
       teacherId: 1,
       schoolYear: "2022-23",
+    });
+
+    await createCategory("Art");
+    await createCategory("ELA");
+    await createCategory("Math");
+    await createCategory("Writing");
+    await createCategory("Social Studies");
+    await createCategory("Science");
+
+    await createAssignment({
+      name: "Dinosaur Drawing",
+      totalPoints: 10,
+      categoryId: 1,
+      teacherId: 1,
     });
   } catch (error) {
     console.error(error);

@@ -27,7 +27,7 @@ const createNewStudent = async (req, res, next) => {
     const studentData = req.body;
     const { newStudent } = await createStudent(studentData);
 
-    if (!students) {
+    if (!newStudent) {
       return next(addStudentError());
     }
 

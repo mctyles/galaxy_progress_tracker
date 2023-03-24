@@ -33,10 +33,26 @@ function authenticationRequiredError() {
   };
 }
 
+function noAssignmentsError(username) {
+  return {
+    name: "noAssignmentsError",
+    message: `No assignments found for user ${username}.`,
+  };
+}
+
+function addAssignmentError() {
+  return {
+    name: "addAssignmentError",
+    message: `There was an error adding this assignment.`,
+  };
+}
+
 module.exports = {
   userAlreadyExistsError,
   invalidPasswordError,
   noStudentDataError,
   authenticationRequiredError,
   addStudentError,
+  noAssignmentsError,
+  addAssignmentError,
 };
