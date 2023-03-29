@@ -9,3 +9,7 @@ export const usersController = axios.create({
 export const studentsController = axios.create({
   baseURL: DEV_API_URL + "/students",
 });
+
+export const assignmentsController = axios.create({
+  baseURL: DEV_API_URL + "/assignments",
+});
