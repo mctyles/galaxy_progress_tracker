@@ -47,6 +47,13 @@ function addAssignmentError() {
   };
 }
 
+function fetchCategoriesError() {
+  return {
+    name: "fetchCategoriesError",
+    message: `No categories were found.`,
+  };
+}
+
 module.exports = {
   userAlreadyExistsError,
   invalidPasswordError,
@@ -55,4 +62,5 @@ module.exports = {
   addStudentError,
   noAssignmentsError,
   addAssignmentError,
+  fetchCategoriesError,
 };

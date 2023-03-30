@@ -58,13 +58,8 @@ export default function AddStudentForm() {
   };
 
   const handleSchoolYearChanged = (event) => {
-    console.log(event);
     const selectedSchoolYear = event.target.value;
     setSchoolYear(selectedSchoolYear);
-  };
-
-  const handleCancelButtonClick = () => {
-    navigate("/products");
   };
 
   return (

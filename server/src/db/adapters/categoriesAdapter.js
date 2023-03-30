@@ -1,6 +1,6 @@
 const client = require("../client");
 
-const createCategory = async (categoryName) => {
+async function createCategory(categoryName) {
   const {
     rows: [category],
   } = await client.query(
@@ -13,6 +13,11 @@ const createCategory = async (categoryName) => {
   );
 
   return category;
-};
+}
 
-module.exports = { createCategory };
+async function getAllCategories() {
+  const { rows: categories } = await client.query(`SELECT * FROM categories;`);
+  return categories;
+}
+
+module.exports = { createCategory, getAllCategories };

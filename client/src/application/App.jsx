@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import FormButton from "../components/FormButton";
 import Navbar from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
+import AddAssignmentForm from "../routes/assignments/AddAssignmentForm";
 import AssignmentsPage from "../routes/assignments/AssignmentsPage";
 import UserAuthenticationForm from "../routes/auth/UserAuthenticationForm";
 import AddStudentForm from "../routes/students/AddStudentForm";
@@ -25,6 +26,7 @@ function App() {
             <Route element={<StudentsPage />} path="me/students" />
             <Route element={<AddStudentForm />} path="me/students/add" />
             <Route element={<AssignmentsPage />} path="me/assignments" />
+            <Route element={<AddAssignmentForm />} path="me/assignments/add" />
           </Routes>
         </UserProvider>
       </div>
