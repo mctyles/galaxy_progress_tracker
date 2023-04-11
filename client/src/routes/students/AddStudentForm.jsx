@@ -112,11 +112,7 @@ export default function AddStudentForm() {
 
         <FormButton type="submit" content={"Submit"} clickHandler={null} />
       </form>
-      <FormButton
-        type="button"
-        content={"Cancel"}
-        clickHandler={handleCancelButtonClick}
-      />
+      <FormButton type="button" content={"Cancel"} clickHandler={null} />
     </Fragment>
   );
 }

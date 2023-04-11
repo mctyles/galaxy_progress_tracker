@@ -6,7 +6,7 @@ export default function TableRow({ data }) {
       {data.map((element) => {
         return (
           <>
-            <td>{element}</td>
+            <td className="p-3 border rounded">{element}</td>
           </>
         );
       })}

@@ -5,7 +5,9 @@ export default function TableHeader({ tableHeaders }) {
         {tableHeaders.map((header) => {
           return (
             <>
-              <th>{header}</th>
+              <th className={`p-3 border rounded w-1/${tableHeaders.length}`}>
+                {header}
+              </th>
             </>
           );
         })}
