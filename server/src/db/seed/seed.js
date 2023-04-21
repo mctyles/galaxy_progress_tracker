@@ -49,6 +49,7 @@ async function createTables() {
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     "totalPoints" INTEGER,
+    "dateAssigned" DATE,
     "categoryId" INTEGER REFERENCES categories(id) ON DELETE CASCADE,
     "teacherId" INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
@@ -96,6 +97,7 @@ async function seed() {
     await createAssignment({
       name: "Dinosaur Drawing",
       totalPoints: 10,
+      dateAssigned: "2023-04-12",
       categoryId: 1,
       teacherId: 1,
     });

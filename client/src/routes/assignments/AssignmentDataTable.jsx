@@ -8,12 +8,12 @@ export default function AssignmentDataTable() {
   const assignments = useAssignmentsList();
 
   return (
-    <>
+    <main className="flex justify-center">
       {assignments.length ? (
         <Table data={assignments} />
       ) : (
         <p>"No assignments to display"</p>
       )}
-    </>
+    </main>
   );
 }

@@ -4,7 +4,7 @@ const {
   generateInsertValues,
 } = require("../queryUtils");
 
-const getAllStudentsByTeacher = async (teacherId) => {
+async function getAllStudentsByTeacher(teacherId) {
   const { rows: students } = await client.query(
     `
         SELECT * FROM students
@@ -14,9 +14,9 @@ const getAllStudentsByTeacher = async (teacherId) => {
   );
 
   return students;
-};
+}
 
-const createStudent = async (studentObj) => {
+async function createStudent(studentObj) {
   const {
     rows: [student],
   } = await client.query(
@@ -29,6 +29,6 @@ const createStudent = async (studentObj) => {
   );
 
   return student;
-};
+}
 
 module.exports = { getAllStudentsByTeacher, createStudent };

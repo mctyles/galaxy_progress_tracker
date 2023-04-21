@@ -12,7 +12,7 @@ import Home from "./Home";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App m-4 flex flex-col align-center">
+      <div className="App m-4 flex flex-col">
         <UserProvider>
           <Navbar />
           <Routes>
