@@ -16,6 +16,18 @@ async function getAllStudentsByTeacher(teacherId) {
   return students;
 }
 
+async function getStudentById(studentId) {
+  const { rows: students } = await client.query(
+    `
+        SELECT * FROM students
+        WHERE id=$1;
+        `,
+    [studentId]
+  );
+
+  return students;
+}
+
 async function createStudent(studentObj) {
   const {
     rows: [student],
@@ -31,4 +43,4 @@ async function createStudent(studentObj) {
   return student;
 }
 
-module.exports = { getAllStudentsByTeacher, createStudent };
+module.exports = { getAllStudentsByTeacher, getStudentById, createStudent };

@@ -6,6 +6,7 @@ async function getCategories(req, res, next) {
     const categories = await getAllCategories();
 
     if (!categories) {
+      const student = await getStuden
       return next(fetchCategoriesError());
     }
 

@@ -54,6 +54,21 @@ function fetchCategoriesError() {
   };
 }
 
+function fetchStudentsAssignmentsError(student) {
+  const { firstName, lastInitial } = student;
+  return {
+    name: "fetchStudentAssignmentsError",
+    message: `There are no assignments for ${firstName} ${lastInitial}.`,
+  };
+}
+
+function addStudentAssignmentError() {
+  return {
+    name: "addStudentAssignmentError",
+    message: "There was an error adding this assignment for this student",
+  };
+}
+
 module.exports = {
   userAlreadyExistsError,
   invalidPasswordError,
@@ -63,4 +78,6 @@ module.exports = {
   noAssignmentsError,
   addAssignmentError,
   fetchCategoriesError,
+  fetchStudentsAssignmentsError,
+  addStudentAssignmentError,
 };

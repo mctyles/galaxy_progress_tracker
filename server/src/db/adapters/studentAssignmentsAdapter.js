@@ -12,8 +12,23 @@ async function getAllAssignmentsByStudent(studentId) {
     ON assignments.id = student_assignments."assignmentId"
     JOIN students
     ON student_assignments."studentId" = students.id
-    WHERE student_assignments."studentId" = $1;`,
+    WHERE students.id = $1;`,
     [studentId]
+  );
+
+  return studentAssignments;
+}
+
+async function getAssignmentByIds(studentId, assignmentId) {
+  const { rows: studentAssignments } = await client.query(
+    `
+      SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", assignments."categoryId", assignments."teacherId",  student_assignments.* FROM assignments
+      JOIN student_assignments 
+      ON assignments.id = student_assignments."assignmentId"
+      JOIN students
+      ON student_assignments."studentId" = students.id
+      WHERE students.id = $1 AND assigments.id = $2;`,
+    [studentId, assignmentId]
   );
 
   return studentAssignments;
@@ -25,7 +40,7 @@ async function createStudentAssignment(studentAssignmentObj) {
   } = await client.query(
     `
     INSERT INTO student_assignments (${generateInsertColumns(
-      studentAssignmentsObj
+      studentAssignmentObj
     )})
     VALUES (${generateInsertValues(studentAssignmentObj)})
     RETURNING *;
@@ -35,3 +50,9 @@ async function createStudentAssignment(studentAssignmentObj) {
 
   return studentAssignment;
 }
+
+module.exports = {
+  getAllAssignmentsByStudent,
+  getAssignmentByIds,
+  createStudentAssignment,
+};
