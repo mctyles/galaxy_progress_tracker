@@ -23,6 +23,7 @@ export default function AddStudentForm() {
   const [lastInitial, setLastInitial] = useState("");
   const [readingLevel, setReadingLevel] = useState("");
   const [schoolYear, setSchoolYear] = useState(schoolYears[0]);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const { user } = useContext(UserContext);
 
@@ -31,7 +32,7 @@ export default function AddStudentForm() {
   const handleFormSubmission = async (event) => {
     event.preventDefault();
 
-    addNewStudent(user?.token, {
+    const addedStudent = await addNewStudent(user?.token, {
       firstName,
       lastInitial,
       readingLevel,
@@ -39,7 +40,11 @@ export default function AddStudentForm() {
       teacherId: user?.user.id,
     });
 
-    navigate("/me/students");
+    console.log(addedStudent);
+
+    if (addedStudent) {
+      setSubmitSuccess(true);
+    }
   };
 
   const handleFirstNameChanged = (event) => {
@@ -63,56 +68,59 @@ export default function AddStudentForm() {
   };
 
   return (
-    <Fragment className="flex justify-center">
-      <form
-        onSubmit={handleFormSubmission}
-        className="flex flex-col gap-4 lg:max-w-xl grow"
-      >
-        <FormInput
-          inputName="first_name"
-          labelContent="First Name:"
-          inputType="text"
-          inputValue={firstName}
-          changeHandler={handleFirstNameChanged}
-          required={true}
-        />
-
-        <FormInput
-          inputName="last_initial"
-          labelContent="Last Initial:"
-          inputType="text"
-          inputValue={lastInitial}
-          changeHandler={handleLastInitialChanged}
-          required={true}
-        />
-
-        <FormInput
-          inputName="reading_level"
-          labelContent="Reading Level"
-          inputType="text"
-          inputValue={readingLevel}
-          changeHandler={handleReadingLevelChanged}
-        />
-
-        <label>Select School Year:</label>
-        <select
-          onChange={handleSchoolYearChanged}
-          value={schoolYear}
-          required={true}
-          className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
+    <Fragment className="flex justify-center ">
+      {submitSuccess ? (
+        <p>Student was successfully added!</p>
+      ) : (
+        <form
+          onSubmit={handleFormSubmission}
+          className="flex flex-col gap-4 lg:max-w-xl grow text-white"
         >
-          {schoolYears.map((year) => {
-            return (
-              <Fragment key={year}>
-                <option>{year}</option>
-              </Fragment>
-            );
-          })}
-        </select>
+          <FormInput
+            inputName="first_name"
+            labelContent="First Name:"
+            inputType="text"
+            inputValue={firstName}
+            changeHandler={handleFirstNameChanged}
+            required={true}
+          />
 
-        <FormButton type="submit" content={"Submit"} clickHandler={null} />
-      </form>
-      <FormButton type="button" content={"Cancel"} clickHandler={null} />
+          <FormInput
+            inputName="last_initial"
+            labelContent="Last Initial:"
+            inputType="text"
+            inputValue={lastInitial}
+            changeHandler={handleLastInitialChanged}
+            required={true}
+          />
+
+          <FormInput
+            inputName="reading_level"
+            labelContent="Reading Level"
+            inputType="text"
+            inputValue={readingLevel}
+            changeHandler={handleReadingLevelChanged}
+          />
+
+          <label>Select School Year:</label>
+          <select
+            onChange={handleSchoolYearChanged}
+            value={schoolYear}
+            required={true}
+            className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
+          >
+            {schoolYears.map((year) => {
+              return (
+                <Fragment key={year}>
+                  <option>{year}</option>
+                </Fragment>
+              );
+            })}
+          </select>
+
+          <FormButton type="submit" content={"Submit"} clickHandler={null} />
+        </form>
+      )}
     </Fragment>
   );
 }

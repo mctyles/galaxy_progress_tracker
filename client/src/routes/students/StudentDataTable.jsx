@@ -12,20 +12,19 @@ export default function StudentDataTable() {
   const [schoolYear, setSchoolYear] = useState(schoolYearList[0]);
 
   const filteredStudents = filterStudentsBySchoolYear(students, schoolYear);
-  console.log(filteredStudents);
 
   return (
-    <>
+    <section className="mb-3">
       <SelectDropdown
         value={schoolYear}
         options={schoolYearList}
-        handleChange={(e) => setSchoolYear(e.target.value)}
+        handleChange={(value) => setSchoolYear(value)}
       />
       {filteredStudents.length ? (
         <Table data={filteredStudents} />
       ) : (
         <p>No students to display</p>
       )}
-    </>
+    </section>
   );
 }

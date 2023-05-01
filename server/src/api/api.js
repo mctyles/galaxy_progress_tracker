@@ -16,6 +16,6 @@ apiRouter.use("/assignments", assignmentsRouter);
 
 apiRouter.use("/categories", categoriesRouter);
 
-apiRouter.use("/students/assignments", studentAssignmentsRouter);
+apiRouter.use("/student_assignments", studentAssignmentsRouter);
 
 module.exports = apiRouter;

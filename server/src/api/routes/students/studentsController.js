@@ -25,7 +25,7 @@ const getStudentsByTeacherId = async (req, res, next) => {
 const createNewStudent = async (req, res, next) => {
   try {
     const studentData = req.body;
-    const { newStudent } = await createStudent(studentData);
+    const newStudent = await createStudent(studentData);
 
     if (!newStudent) {
       return next(addStudentError());
@@ -36,6 +36,5 @@ const createNewStudent = async (req, res, next) => {
     console.error(error);
   }
 };
-
 
 module.exports = { getStudentsByTeacherId, createNewStudent };

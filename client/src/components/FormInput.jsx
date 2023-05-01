@@ -14,6 +14,7 @@ export default function FormInput({
         value={inputValue}
         type={inputType}
         onChange={changeHandler}
+        className="text-black p-1 rounded"
       />
     </>
   );
