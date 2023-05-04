@@ -8,7 +8,8 @@ async function getAllAssignmentsByTeacher(teacherId) {
   const { rows: assignments } = await client.query(
     `
   SELECT * FROM assignments
-  WHERE "teacherId"=$1;
+  WHERE "teacherId"=$1
+  ORDER BY "dateAssigned";
   `,
     [teacherId]
   );

@@ -1,7 +1,7 @@
 import { useContext, useState, React, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/FormInput";
-import FormButton from "../../components/FormButton";
+import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import { addNewStudent } from "../../api/students";
 
@@ -118,7 +118,7 @@ export default function AddStudentForm() {
             })}
           </select>
 
-          <FormButton type="submit" content={"Submit"} clickHandler={null} />
+          <Button type="submit" content={"Submit"} clickHandler={null} />
         </form>
       )}
     </Fragment>

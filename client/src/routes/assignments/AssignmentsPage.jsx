@@ -4,7 +4,7 @@ import AssignmentDataTable from "./AssignmentDataTable";
 
 export default function AssignmentsPage() {
   return (
-    <main>
+    <main className="text-white">
       <AssignmentDataTable />
       <FormModal
         form={<AddAssignmentForm />}

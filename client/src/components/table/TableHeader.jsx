@@ -2,13 +2,14 @@ export default function TableHeader({ tableHeaders }) {
   return (
     <thead>
       <tr>
-        {tableHeaders.map((header) => {
+        {tableHeaders.map((header, idx) => {
           return (
-            <>
-              <th className={`p-3 border rounded w-1/${tableHeaders.length}`}>
-                {header}
-              </th>
-            </>
+            <th
+              className={`p-3 border-b-2 w-1/${tableHeaders.length}`}
+              key={idx}
+            >
+              {header}
+            </th>
           );
         })}
       </tr>

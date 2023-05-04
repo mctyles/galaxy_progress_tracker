@@ -6,7 +6,6 @@ import SelectDropdown from "../../components/SelectDropdown";
 import { filterStudentsBySchoolYear, getSchoolYearList } from "./utils";
 
 export default function StudentDataTable() {
-  const { user } = useContext(UserContext);
   const students = useStudentsList();
   const schoolYearList = getSchoolYearList(students);
   const [schoolYear, setSchoolYear] = useState(schoolYearList[0]);
@@ -15,15 +14,17 @@ export default function StudentDataTable() {
 
   return (
     <section className="mb-3">
+      <h3>Select Year: </h3>
       <SelectDropdown
         value={schoolYear}
         options={schoolYearList}
         handleChange={(value) => setSchoolYear(value)}
+        dropdownWidth="1/4"
       />
       {filteredStudents.length ? (
         <Table data={filteredStudents} />
       ) : (
-        <p>No students to display</p>
+        <p className="p-10 border rounded">No students to display</p>
       )}
     </section>
   );

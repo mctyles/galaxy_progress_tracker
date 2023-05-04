@@ -6,11 +6,7 @@ export default function TableBody({ data }) {
     <tbody>
       {data.map((element) => {
         const tableDataValues = formatTableValues(element);
-        return (
-          <>
-            <TableRow data={tableDataValues} />
-          </>
-        );
+        return <TableRow data={tableDataValues} />;
       })}
     </tbody>
   );

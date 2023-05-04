@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>
+      <h1 className="text-white">
         Welcome to the Galaxy Progress Tracker
         {user && `, ${user.user.username}`}!
       </h1>

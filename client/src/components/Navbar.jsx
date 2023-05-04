@@ -11,7 +11,6 @@ export default function Navbar() {
     { path: "/", linkName: "Home" },
     { path: "me/students", linkName: "Students" },
     { path: "me/assignments", linkName: "Assignments" },
-    { path: "/me/profile", linkName: "Your Profile" },
   ];
 
   const loggedOutNavLinks = [
@@ -23,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between py-2 mb-6">
-      <Link to="/" className="font-extrabold text-2xl">
+      <Link to="/" className="font-extrabold text-2xl text-white">
         GALAXY PROGRESS TRACKER
       </Link>
       <ul className="flex">

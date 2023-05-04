@@ -8,7 +8,8 @@ async function getAllStudentsByTeacher(teacherId) {
   const { rows: students } = await client.query(
     `
         SELECT * FROM students
-        WHERE "teacherId"=$1;
+        WHERE "teacherId"=$1
+        ORDER BY "lastInitial";
         `,
     [teacherId]
   );

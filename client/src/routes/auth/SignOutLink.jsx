@@ -9,7 +9,7 @@ export default function SignOutLink() {
   const navigate = useNavigate();
 
   return (
-    <li className="px-3 text-blue-700 hover:text-blue-300/50">
+    <li className="px-3 text-blue-300 hover:text-slate-400">
       <button type="button" onClick={() => handleSignOut(setUser, navigate)}>
         Sign Out
       </button>

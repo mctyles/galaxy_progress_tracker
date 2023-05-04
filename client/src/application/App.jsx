@@ -8,6 +8,7 @@ import UserAuthenticationForm from "../routes/auth/UserAuthenticationForm";
 import AddStudentForm from "../routes/students/AddStudentForm";
 import StudentsPage from "../routes/students/StudentsPage";
 import Home from "./Home";
+import StudentProfile from "../routes/students/StudentProfile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               path="users/:authType"
             />
             <Route element={<StudentsPage />} path="me/students" />
+            <Route element={<StudentProfile />} path="me/students/:id" />
             <Route element={<AddStudentForm />} path="me/students/add" />
             <Route element={<AssignmentsPage />} path="me/assignments" />
             <Route element={<AddAssignmentForm />} path="me/assignments/add" />

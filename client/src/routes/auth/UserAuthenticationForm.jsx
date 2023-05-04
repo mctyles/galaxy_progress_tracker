@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import FormButton from "../../components/FormButton";
+import Button from "../../components/Button";
 import FormInput from "../../components/FormInput";
 import { UserContext } from "../../context/UserContext";
 import { handleSubmit } from "./utils";
@@ -64,7 +64,7 @@ export default function UserAuthenticationForm() {
         inputValue={password}
         changeHandler={(e) => setPassword(e.target.value)}
       />
-      <FormButton type="submit" content="Submit" clickHandler={null} />
+      <Button type="submit" content="Submit" clickHandler={null} />
     </form>
   );
 }
