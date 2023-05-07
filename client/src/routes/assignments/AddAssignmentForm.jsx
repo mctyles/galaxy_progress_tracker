@@ -16,8 +16,6 @@ export default function AddAssignmentForm() {
 
   const { user } = useContext(UserContext);
 
-  const navigate = useNavigate();
-
   const handleFormSubmission = async (event) => {
     event.preventDefault();
 

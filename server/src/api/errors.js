@@ -69,6 +69,13 @@ function addStudentAssignmentError() {
   };
 }
 
+function getUploadUrlError() {
+  return {
+    name: "getUploadUrlError",
+    message: "There was an error generating an upload URL for this file.",
+  };
+}
+
 module.exports = {
   userAlreadyExistsError,
   invalidPasswordError,
@@ -80,4 +87,5 @@ module.exports = {
   fetchCategoriesError,
   fetchStudentsAssignmentsError,
   addStudentAssignmentError,
+  getUploadUrlError,
 };

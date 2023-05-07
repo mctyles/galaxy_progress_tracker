@@ -6,7 +6,7 @@ export default function FormInput({
   changeHandler,
 }) {
   return (
-    <>
+    <fieldset>
       <label htmlFor={inputName}>{labelContent}</label>
       <input
         id={inputName}
@@ -16,6 +16,6 @@ export default function FormInput({
         onChange={changeHandler}
         className="text-black p-1 rounded"
       />
-    </>
+    </fieldset>
   );
 }
