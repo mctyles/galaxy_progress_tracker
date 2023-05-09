@@ -21,3 +21,7 @@ export const categoriesController = axios.create({
 export const studentAssignmentsController = axios.create({
   baseURL: DEV_API_URL + "/student_assignments",
 });
+
+export const s3URLController = axios.create({
+  baseURL: DEV_API_URL + "/s3url",
+});

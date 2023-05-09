@@ -13,9 +13,7 @@ const s3 = new S3Client({
 });
 
 async function generateUploadURL(filename) {
-  const imageName = `${Date.now}-${filename}`;
-
-  console.log(s3);
+  const imageName = `${Date.now()}-${filename}`;
 
   const params = {
     Bucket: bucketName,

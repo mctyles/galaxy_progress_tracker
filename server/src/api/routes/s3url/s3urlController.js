@@ -3,7 +3,7 @@ const { generateUploadURL } = require("./s3");
 
 async function getUploadURL(req, res, next) {
   try {
-    const { filename } = req.body;
+    const { filename } = req.query;
 
     const url = await generateUploadURL(filename);
 
