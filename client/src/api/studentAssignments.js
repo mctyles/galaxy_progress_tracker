@@ -11,14 +11,14 @@ export async function fetchStudentAssignments(token) {
   }
 }
 
-export async function addNewStudentAssignment(token, assignmentData) {
+export async function addNewStudentAssignment(token, studentAssignmentData) {
   try {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const response = await studentAssignmentsController.post(
       "",
-      assignmentData,
+      studentAssignmentData,
       config
     );
     const { data } = response;

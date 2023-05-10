@@ -3,19 +3,14 @@ import { fetchImageUploadURL, uploadFileToS3Bucket } from "../api/s3url";
 export async function onFileUploadSubmitClickedHandler(
   token,
   file,
-  setImageUrl
+  setImageUrl,
+  setProgress
 ) {
-  console.log("Hi", token, file.name);
-
   const { url } = await fetchImageUploadURL(token, file.name);
 
-  console.log(url);
-
-  await uploadFileToS3Bucket(url, file);
+  await uploadFileToS3Bucket(url, file, setProgress);
 
   const imageUrl = url.split("?")[0];
-
-  console.log(imageUrl);
 
   setImageUrl(imageUrl);
 }

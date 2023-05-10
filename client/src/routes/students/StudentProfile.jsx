@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import useStudentsList from "../../hooks/useStudentsList";
 import ReadingLevelCard from "./ReadingLevelCard";
+import FormModal from "../../components/FormModal";
+import AddStudentAssignmentForm from "../student_assignments/AddStudentAssignmentForm";
 
 export default function StudentProfile() {
   const students = useStudentsList();
@@ -20,6 +22,12 @@ export default function StudentProfile() {
       <section>
         <h2 className="text-3xl">Graded Assignments</h2>
       </section>
+      <FormModal
+        form={<AddStudentAssignmentForm studentId={id} />}
+        title="Add Graded Assignment"
+        description="Fill in the assignment information"
+        buttonText={`Add Graded Assignment for ${student?.firstName} ${student?.lastInitial}`}
+      />
     </main>
   );
 }

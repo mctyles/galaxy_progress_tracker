@@ -1,10 +1,13 @@
 import { useContext, useState } from "react";
 import { onFileUploadSubmitClickedHandler } from "./utils";
 import { UserContext } from "../context/UserContext";
+import ErrorMessage from "./Error";
+import Button from "./Button";
 
-export default function FileUpload() {
+export default function FileUpload({ setImageUrl }) {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const { user } = useContext(UserContext);
   const { token } = user;
@@ -14,26 +17,44 @@ export default function FileUpload() {
     setSelectedFile(file);
   }
 
-  function handleFormSubmission(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    onFileUploadSubmitClickedHandler(token, selectedFile, setImageUrl);
+  function handleButtonClick() {
+    if (!selectedFile) {
+      setErrorMessage("Please select a file to upload.");
+      return;
+    }
+
+    onFileUploadSubmitClickedHandler(
+      token,
+      selectedFile,
+      setImageUrl,
+      setProgress
+    );
+    setErrorMessage("");
   }
 
   return (
-    <form onSubmit={handleFormSubmission}>
+    <fieldset className="text-white">
+      {errorMessage.length ? <ErrorMessage message={errorMessage} /> : null}
       <input
+        className="mr-2"
         type="file"
         name="image"
         onChange={onFileChanged}
         required={true}
       />
-      <button
-        type="submit"
-        className="px-1 border-2 border-gray-700 rounded-md bg-gray-100"
-      >
-        Upload
-      </button>
-    </form>
+      <Button type="button" content="Upload" clickHandler={handleButtonClick} />
+      {progress ? (
+        <fieldset className="p-2 flex items-center">
+          <label htmlFor="file">Upload progress:</label>
+          <progress
+            className="h-3 mx-2 [&::-webkit-progress-bar]:rounded-lg [&::-webkit-progress-value]:rounded-lg [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-500 [&::-moz-progress-bar]:bg-blue-500"
+            id="file"
+            max="100"
+            value={progress}
+          ></progress>
+          <span>{`${progress}%`}</span>
+        </fieldset>
+      ) : null}
+    </fieldset>
   );
 }

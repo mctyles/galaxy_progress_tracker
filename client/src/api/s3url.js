@@ -15,9 +15,17 @@ export async function fetchImageUploadURL(token, filename) {
   }
 }
 
-export async function uploadFileToS3Bucket(url, file) {
+export async function uploadFileToS3Bucket(url, file, setProgress) {
   try {
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+      onUploadProgress: (progressEvent) => {
+        const percentCompleted = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        setProgress(percentCompleted);
+      },
+    };
     const response = await axios.put(url, file, config);
     const { data } = response;
     return data;
