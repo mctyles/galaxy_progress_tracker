@@ -14,13 +14,6 @@ studentsRouter.get("/", useToken, requireUser, getStudentsByTeacherId);
 
 studentsRouter.post("/", useToken, requireUser, createNewStudent);
 
-studentsRouter.get(
-  "/:id/assignments",
-  useToken,
-  requireUser,
-  getStudentAssignments
-);
-
 studentsRouter.post(
   "/:id/assignments",
   useToken,

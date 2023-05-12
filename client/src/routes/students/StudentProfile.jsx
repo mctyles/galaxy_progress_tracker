@@ -3,6 +3,7 @@ import useStudentsList from "../../hooks/useStudentsList";
 import ReadingLevelCard from "./ReadingLevelCard";
 import FormModal from "../../components/FormModal";
 import AddStudentAssignmentForm from "../student_assignments/AddStudentAssignmentForm";
+import StudentAssignmentsList from "../student_assignments/StudentAssignmentsList";
 
 export default function StudentProfile() {
   const students = useStudentsList();
@@ -19,9 +20,7 @@ export default function StudentProfile() {
         <h1 className="text-4xl">{`${student?.lastInitial}, ${student?.firstName}`}</h1>
         <ReadingLevelCard readingLevel={student?.readingLevel} />
       </header>
-      <section>
-        <h2 className="text-3xl">Graded Assignments</h2>
-      </section>
+      <StudentAssignmentsList studentId={Number(id)} />
       <FormModal
         form={<AddStudentAssignmentForm studentId={id} />}
         title="Add Graded Assignment"

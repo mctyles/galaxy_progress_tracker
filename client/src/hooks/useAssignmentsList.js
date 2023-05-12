@@ -13,8 +13,7 @@ export default function useAssignmentsList() {
         assignmentsList.forEach((assignment) => {
           if (assignment.dateAssigned) {
             const date = assignment.dateAssigned;
-            const dateString = new Date(date.replace(" ", "T"));
-            assignment.dateAssigned = dateString.toDateString();
+            assignment.dateAssigned = formatDate(date);
           }
         });
 
@@ -27,4 +26,9 @@ export default function useAssignmentsList() {
   }, []);
 
   return assignments;
+}
+
+function formatDate(date) {
+  const dateString = new Date(date.replace(" ", "T"));
+  return dateString.toDateString();
 }

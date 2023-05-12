@@ -54,11 +54,10 @@ function fetchCategoriesError() {
   };
 }
 
-function fetchStudentsAssignmentsError(student) {
-  const { firstName, lastInitial } = student;
+function fetchStudentsAssignmentsError() {
   return {
     name: "fetchStudentAssignmentsError",
-    message: `There are no assignments for ${firstName} ${lastInitial}.`,
+    message: `There are no graded assignments to display.`,
   };
 }
 

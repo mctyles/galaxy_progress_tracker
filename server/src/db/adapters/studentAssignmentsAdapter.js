@@ -4,7 +4,7 @@ const {
   generateInsertValues,
 } = require("../queryUtils");
 
-async function getAllAssignmentsByStudent(studentId) {
+async function getAllStudentAssignmentsByTeacher(teacherId) {
   const { rows: studentAssignments } = await client.query(
     `
     SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId",  student_assignments.* FROM assignments
@@ -14,8 +14,8 @@ async function getAllAssignmentsByStudent(studentId) {
     ON assignments.id = student_assignments."assignmentId"
     JOIN students
     ON student_assignments."studentId" = students.id
-    WHERE students.id = $1;`,
-    [studentId]
+    WHERE assignments."teacherId" = $1;`,
+    [teacherId]
   );
 
   return studentAssignments;
@@ -24,8 +24,9 @@ async function getAllAssignmentsByStudent(studentId) {
 async function getAssignmentByIds(studentId, assignmentId) {
   const { rows: studentAssignments } = await client.query(
     `
-      SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", assignments."categoryId", assignments."teacherId",  student_assignments.* FROM assignments
-      JOIN student_assignments 
+      SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId",  student_assignments.* FROM assignments
+      JOIN categories 
+      ON categories.id = assignments."categoryId"
       ON assignments.id = student_assignments."assignmentId"
       JOIN students
       ON student_assignments."studentId" = students.id
@@ -54,7 +55,7 @@ async function createStudentAssignment(studentAssignmentObj) {
 }
 
 module.exports = {
-  getAllAssignmentsByStudent,
+  getAllStudentAssignmentsByTeacher,
   getAssignmentByIds,
   createStudentAssignment,
 };

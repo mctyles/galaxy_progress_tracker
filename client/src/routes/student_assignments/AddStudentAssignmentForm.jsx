@@ -12,7 +12,7 @@ export default function AddStudentAssignmentForm({ studentId }) {
   const { user } = useContext(UserContext);
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [assignmentId, setAssignmentId] = useState(assignments[0]?.id);
+  const [assignmentId, setAssignmentId] = useState(assignments[0].id);
   const [assignmentNotes, setAssignmentNotes] = useState("");
   const [earnedPoints, setEarnedPoints] = useState(0);
   const [imageUrl, setImageUrl] = useState("");

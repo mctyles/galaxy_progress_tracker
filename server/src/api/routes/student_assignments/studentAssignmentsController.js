@@ -1,8 +1,7 @@
 const {
-  getAllAssignmentsByStudent,
+  getAllStudentAssignmentsByTeacher,
   createStudentAssignment,
 } = require("../../../db/adapters/studentAssignmentsAdapter");
-const { getStudentById } = require("../../../db/adapters/studentsAdapter");
 const {
   fetchStudentsAssignmentsError,
   addStudentAssignmentError,
@@ -10,12 +9,11 @@ const {
 
 async function getStudentAssignments(req, res, next) {
   try {
-    const { id } = req.params;
-    const studentAssignments = await getAllAssignmentsByStudent(id);
+    const { id } = req.user;
+    const studentAssignments = await getAllStudentAssignmentsByTeacher(id);
 
     if (!studentAssignments) {
-      const student = await getStudentById(id);
-      return next(fetchStudentsAssignmentsError(student));
+      return next(fetchStudentsAssignmentsError());
     }
 
     res.json(studentAssignments);
