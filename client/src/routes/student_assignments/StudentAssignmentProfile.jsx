@@ -1,21 +1,16 @@
 import { useParams } from "react-router-dom";
 import useStudentAssignmentsList from "../../hooks/useStudentAssignments";
 import useStudentsList from "../../hooks/useStudentsList";
+import FilePreviewer from "react-file-previewer";
 
 export default function StudentAssignmentProfile() {
   const studentAssignmentsList = useStudentAssignmentsList();
   const students = useStudentsList();
   const { studentId, assignmentId } = useParams();
 
-  console.log(studentId, assignmentId);
-
   const studentAssignment = studentAssignmentsList.find(
     (studentAssignment) => studentAssignment.id === Number(assignmentId)
   );
-
-  console.log("hi", studentAssignment);
-
-  console.log("fu", studentAssignmentsList);
 
   const student = students.find((student) => student.id === Number(studentId));
 
@@ -26,7 +21,13 @@ export default function StudentAssignmentProfile() {
       <p>{`Graded for: ${student?.firstName} ${student?.lastInitial}`}</p>
       <p>{`Points: ${studentAssignment?.earnedPoints}/${studentAssignment?.totalPoints}`}</p>
       <p>{studentAssignment?.notes}</p>
-      <img src={studentAssignment?.imageUrl} />
+      <section className="w-1/2">
+        <FilePreviewer
+          file={{
+            url: studentAssignment?.imageUrl,
+          }}
+        />
+      </section>
     </main>
   );
 }
