@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FileUpload from "../../components/FileUpload";
 import useAssignmentsList from "../../hooks/useAssignmentsList";
 import FormTextArea from "../../components/FormTextArea";
@@ -12,10 +12,12 @@ export default function AddStudentAssignmentForm({ studentId }) {
   const { user } = useContext(UserContext);
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [assignmentId, setAssignmentId] = useState(assignments[0].id);
+  const [assignmentId, setAssignmentId] = useState(1);
   const [assignmentNotes, setAssignmentNotes] = useState("");
   const [earnedPoints, setEarnedPoints] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => setAssignmentId(assignments[0]?.id), [assignments]);
 
   const handleFormSubmission = async (event) => {
     event.preventDefault();
@@ -65,7 +67,7 @@ export default function AddStudentAssignmentForm({ studentId }) {
             required={true}
             className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
           >
-            {assignments.map((assignment) => {
+            {assignments.map((assignment, idx) => {
               return (
                 <option key={assignment.id} value={assignment.id}>
                   {assignment.name}

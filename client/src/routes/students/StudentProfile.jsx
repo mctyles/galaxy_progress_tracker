@@ -9,9 +9,6 @@ export default function StudentProfile() {
   const students = useStudentsList();
   const { id } = useParams();
 
-  console.log(students);
-  console.log(id);
-
   const student = students.find((student) => student.id === Number(id));
 
   return (

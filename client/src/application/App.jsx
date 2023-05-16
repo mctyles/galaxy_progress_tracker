@@ -10,6 +10,7 @@ import StudentsPage from "../routes/students/StudentsPage";
 import Home from "./Home";
 import StudentProfile from "../routes/students/StudentProfile";
 import FileUpload from "../components/FileUpload";
+import StudentAssignmentProfile from "../routes/student_assignments/StudentAssignmentProfile";
 
 function App() {
   return (
@@ -28,7 +29,10 @@ function App() {
             <Route element={<AddStudentForm />} path="me/students/add" />
             <Route element={<AssignmentsPage />} path="me/assignments" />
             <Route element={<AddAssignmentForm />} path="me/assignments/add" />
-            <Route element={<FileUpload />} path="uploadtest" />
+            <Route
+              element={<StudentAssignmentProfile />}
+              path="me/students/:studentId/assignments/:assignmentId"
+            />
           </Routes>
         </UserProvider>
       </div>

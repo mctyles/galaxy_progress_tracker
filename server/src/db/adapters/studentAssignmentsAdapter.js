@@ -7,7 +7,7 @@ const {
 async function getAllStudentAssignmentsByTeacher(teacherId) {
   const { rows: studentAssignments } = await client.query(
     `
-    SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId",  student_assignments.* FROM assignments
+    SELECT student_assignments."id", student_assignments."earnedPoints", student_assignments."imageUrl", assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId", student_assignments."studentId", student_assignments.notes FROM assignments
     JOIN categories 
     ON categories.id = assignments."categoryId"
     JOIN student_assignments 
@@ -24,7 +24,7 @@ async function getAllStudentAssignmentsByTeacher(teacherId) {
 async function getAssignmentByIds(studentId, assignmentId) {
   const { rows: studentAssignments } = await client.query(
     `
-      SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId",  student_assignments.* FROM assignments
+      SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId", student_assignments.* FROM assignments
       JOIN categories 
       ON categories.id = assignments."categoryId"
       ON assignments.id = student_assignments."assignmentId"
