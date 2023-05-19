@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { onFileUploadSubmitClickedHandler } from "./utils";
 import { UserContext } from "../context/UserContext";
-import ErrorMessage from "./Error";
+import ErrorMessage from "./ErrorMessage";
 import Button from "./Button";
 
 export default function FileUpload({ setImageUrl }) {

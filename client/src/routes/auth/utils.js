@@ -8,6 +8,7 @@ export const handleSubmit = async (
   password,
   authType,
   setUser,
+  setErrorMessage,
   navigate
 ) => {
   event.preventDefault();
@@ -17,6 +18,11 @@ export const handleSubmit = async (
     user = await login(username, password);
   } else if (authType === "register") {
     user = await register(firstName, lastName, username, password);
+  }
+
+  if (user.error) {
+    setErrorMessage(user.error.data.message);
+    return;
   }
 
   if (user) {

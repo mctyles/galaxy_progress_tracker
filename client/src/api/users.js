@@ -11,7 +11,7 @@ export async function login(username, password) {
 
     return data;
   } catch (error) {
-    console.error(error);
+    return { error: error.response };
   }
 }
 
@@ -26,6 +26,8 @@ export async function register(firstName, lastName, username, password) {
     const { data } = response;
     return data;
   } catch (error) {
-    console.error(error);
+    return {
+      error: error.response,
+    };
   }
 }

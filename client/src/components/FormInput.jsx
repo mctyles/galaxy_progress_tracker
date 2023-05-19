@@ -4,9 +4,10 @@ export default function FormInput({
   inputType,
   inputValue,
   changeHandler,
+  isRequired = false,
 }) {
   return (
-    <fieldset>
+    <fieldset className="mb-3 flex flex-col">
       <label htmlFor={inputName}>{labelContent}</label>
       <input
         id={inputName}
@@ -14,7 +15,8 @@ export default function FormInput({
         value={inputValue}
         type={inputType}
         onChange={changeHandler}
-        className="text-black p-1 rounded"
+        required={isRequired}
+        className="text-black p-2 w-full rounded"
       />
     </fieldset>
   );

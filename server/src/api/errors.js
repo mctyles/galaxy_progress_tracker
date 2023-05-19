@@ -5,6 +5,13 @@ function userAlreadyExistsError(username) {
   };
 }
 
+function loginError() {
+  return {
+    name: "loginError",
+    message: "The username or password is incorrect",
+  };
+}
+
 function invalidPasswordError(username) {
   return {
     name: "invalidPasswordError",
@@ -77,6 +84,7 @@ function getUploadUrlError() {
 
 module.exports = {
   userAlreadyExistsError,
+  loginError,
   invalidPasswordError,
   noStudentDataError,
   authenticationRequiredError,

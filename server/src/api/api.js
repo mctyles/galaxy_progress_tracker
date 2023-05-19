@@ -1,8 +1,8 @@
 const express = require("express");
+const apiRouter = express.Router();
 const { assignmentsRouter } = require("./routes/assignments/assignmentsRoute");
 const { categoriesRouter } = require("./routes/categories/categoriesRouter");
 const { studentsRouter } = require("./routes/students/studentsRoute");
-const apiRouter = express.Router();
 const usersRouter = require("./routes/users/usersRoute");
 const {
   studentAssignmentsRouter,

@@ -10,7 +10,7 @@ export default function Navbar() {
   const loggedInNavLinks = [
     { path: "/", linkName: "Home" },
     { path: "me/students", linkName: "Students" },
-    { path: "me/assignments", linkName: "Assignments" },
+    { path: "me/assignments", linkName: "Manage Assignments" },
   ];
 
   const loggedOutNavLinks = [

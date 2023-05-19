@@ -4,12 +4,14 @@ import Button from "../../components/Button";
 import FormInput from "../../components/FormInput";
 import { UserContext } from "../../context/UserContext";
 import { handleSubmit } from "./utils";
+import ErrorMessage from "../../components/ErrorMessage";
 
 export default function UserAuthenticationForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { authType } = useParams();
   const { setUser } = useContext(UserContext);
@@ -18,6 +20,7 @@ export default function UserAuthenticationForm() {
 
   return (
     <form
+      className="text-white flex flex-col"
       onSubmit={(event) =>
         handleSubmit(
           event,
@@ -27,11 +30,15 @@ export default function UserAuthenticationForm() {
           password,
           authType,
           setUser,
+          setErrorMessage,
           navigate
         )
       }
     >
-      <h1>{authType === "register" ? "Register" : "Login"}</h1>
+      <h1 className="text-2xl mb-3">
+        {authType === "register" ? "Register" : "Login"}
+      </h1>
+      {errorMessage.length ? <ErrorMessage message={errorMessage} /> : null}
       {authType === "register" && (
         <>
           <FormInput
@@ -40,6 +47,7 @@ export default function UserAuthenticationForm() {
             inputType="text"
             inputValue={firstName}
             changeHandler={(e) => setFirstName(e.target.value)}
+            isRequired={true}
           />
           <FormInput
             inputName="last-name"
@@ -47,6 +55,7 @@ export default function UserAuthenticationForm() {
             inputType="text"
             inputValue={lastName}
             changeHandler={(e) => setLastName(e.target.value)}
+            isRequired={true}
           />
         </>
       )}
@@ -56,6 +65,7 @@ export default function UserAuthenticationForm() {
         inputType="text"
         inputValue={username}
         changeHandler={(e) => setUsername(e.target.value)}
+        isRequired={true}
       />
       <FormInput
         inputName="password"
@@ -63,6 +73,7 @@ export default function UserAuthenticationForm() {
         inputType="password"
         inputValue={password}
         changeHandler={(e) => setPassword(e.target.value)}
+        isRequired={true}
       />
       <Button type="submit" content="Submit" clickHandler={null} />
     </form>

@@ -13,7 +13,7 @@ export default function StudentDataTable() {
   const filteredStudents = filterStudentsBySchoolYear(students, schoolYear);
 
   return (
-    <section className="mb-3">
+    <section className="mb-3 w-full">
       <h3>Select Year: </h3>
       <SelectDropdown
         value={schoolYear}

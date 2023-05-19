@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import useCategories from "../../hooks/useCategories";
 import { addNewAssignment } from "../../api/assignments";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function AddAssignmentForm() {
   const categories = useCategories();
@@ -13,6 +14,10 @@ export default function AddAssignmentForm() {
   const [totalPoints, setTotalPoints] = useState(0);
   const [categoryId, setCategoryId] = useState(1);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [dateAssigned, setDateAssigned] = useState({
+    startDate: null,
+    endDate: null,
+  });
 
   const { user } = useContext(UserContext);
 
@@ -23,6 +28,7 @@ export default function AddAssignmentForm() {
       name,
       totalPoints,
       categoryId,
+      dateAssigned: dateAssigned.startDate,
       teacherId: user?.user.id,
     });
 
@@ -47,7 +53,7 @@ export default function AddAssignmentForm() {
   };
 
   return (
-    <Fragment className="flex justify-center">
+    <section className="flex justify-center">
       {submitSuccess ? (
         <p>Assignment successfully added!</p>
       ) : (
@@ -88,9 +94,16 @@ export default function AddAssignmentForm() {
               );
             })}
           </select>
+          <Datepicker
+            useRange={false}
+            asSingle={true}
+            value={dateAssigned}
+            placeholder="Select date"
+            onChange={(newValue) => setDateAssigned(newValue)}
+          />
           <Button type="submit" content={"Submit"} clickHandler={null} />
         </form>
       )}
-    </Fragment>
+    </section>
   );
 }

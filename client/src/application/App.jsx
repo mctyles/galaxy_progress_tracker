@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
@@ -15,7 +15,7 @@ import StudentAssignmentProfile from "../routes/student_assignments/StudentAssig
 function App() {
   return (
     <BrowserRouter>
-      <div className="App m-4 flex flex-col">
+      <div className="App mx-8 my-6 flex flex-col">
         <UserProvider>
           <Navbar />
           <Routes>
