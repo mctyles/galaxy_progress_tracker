@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useStudentAssignmentsList from "../../hooks/useStudentAssignments";
 import useStudentsList from "../../hooks/useStudentsList";
 import FilePreviewer from "react-file-previewer";
+import CategoryLabel from "./CategoryLabel";
 
 export default function StudentAssignmentProfile() {
   const studentAssignmentsList = useStudentAssignmentsList();
@@ -16,8 +17,10 @@ export default function StudentAssignmentProfile() {
 
   return (
     <main className="text-white">
-      <h1>{studentAssignment?.name}</h1>
-      <p>{studentAssignment?.category}</p>
+      <section className="flex justify-between">
+        <h1 className="text-2xl mb-2">{studentAssignment?.name}</h1>
+        <CategoryLabel category={studentAssignment?.category} />
+      </section>
       <p>{`Graded for: ${student?.firstName} ${student?.lastInitial}`}</p>
       <p>{`Points: ${studentAssignment?.earnedPoints}/${studentAssignment?.totalPoints}`}</p>
       <p>{studentAssignment?.notes}</p>

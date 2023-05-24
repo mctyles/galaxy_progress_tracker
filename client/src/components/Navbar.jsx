@@ -21,10 +21,7 @@ export default function Navbar() {
   const navLinks = user ? loggedInNavLinks : loggedOutNavLinks;
 
   return (
-    <nav className="flex justify-between py-2 mb-6">
-      <Link to="/" className="font-extrabold text-2xl text-white">
-        GALAXY PROGRESS TRACKER
-      </Link>
+    <nav className="flex justify-between py-2 mb-6 hidden lg:block">
       <ul className="flex">
         {navLinks.map((link, idx) => {
           const { path, linkName } = link;

@@ -7,7 +7,7 @@ export default function StudentsPage() {
   return (
     <main className="text-white">
       <h1 className="text-2xl text-slate-300 mb-4">Your Students</h1>
-      <section className="flex flex-col items-center">
+      <section className="w-full flex flex-col content-center items-center">
         <StudentDataTable />
         <FormModal
           form={<AddStudentForm />}

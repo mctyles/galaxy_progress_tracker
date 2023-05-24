@@ -1,13 +1,15 @@
-export function filterStudentsBySchoolYear(students, schoolYear) {
+export function filterStudentsList(students, schoolYear, query) {
   if (!students) {
     return students;
   }
 
-  let filteredStudentList = students;
-  if (schoolYear !== "All")
-    filteredStudentList = students.filter(
-      (student) => student.schoolYear === schoolYear
+  const filteredStudentList = students.filter((student) => {
+    const searchValues = Object.values(student).join(" ");
+    return (
+      (schoolYear === "All" ? true : student.schoolYear === schoolYear) &&
+      searchValues.toLowerCase().includes(query.toLowerCase())
     );
+  });
 
   const studentList = filteredStudentList.map((student) => {
     const { schoolYear: year, teacherId, ...rest } = student;
@@ -29,3 +31,5 @@ export function getSchoolYearList(students) {
   });
   return [...set, "All"];
 }
+
+export function handleSearchQueryChange(query, students) {}

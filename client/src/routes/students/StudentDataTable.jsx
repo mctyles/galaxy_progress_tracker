@@ -1,19 +1,25 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Table from "../../components/table/Table";
-import { UserContext } from "../../context/UserContext";
 import useStudentsList from "../../hooks/useStudentsList";
 import SelectDropdown from "../../components/SelectDropdown";
-import { filterStudentsBySchoolYear, getSchoolYearList } from "./utils";
+import { filterStudentsList, getSchoolYearList } from "./utils";
+import NoDataMessage from "../../components/NoDataMessage";
+import SearchBar from "../../components/SearchBar";
 
 export default function StudentDataTable() {
   const students = useStudentsList();
   const schoolYearList = getSchoolYearList(students);
   const [schoolYear, setSchoolYear] = useState(schoolYearList[0]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredStudents = filterStudentsBySchoolYear(students, schoolYear);
+  const filteredStudents = filterStudentsList(
+    students,
+    schoolYear,
+    searchQuery
+  );
 
   return (
-    <section className="mb-3 w-full">
+    <section className="mb-3 w-full flex flex-col content-center">
       <h3>Select Year: </h3>
       <SelectDropdown
         value={schoolYear}
@@ -21,10 +27,14 @@ export default function StudentDataTable() {
         handleChange={(value) => setSchoolYear(value)}
         dropdownWidth="1/4"
       />
+      <SearchBar
+        value={searchQuery}
+        changeHandler={(event) => setSearchQuery(event.target.value)}
+      />
       {filteredStudents.length ? (
         <Table data={filteredStudents} />
       ) : (
-        <p className="p-10 border rounded">No students to display</p>
+        <NoDataMessage dataType="students" />
       )}
     </section>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
 import AddAssignmentForm from "../routes/assignments/AddAssignmentForm";
 import AssignmentsPage from "../routes/assignments/AssignmentsPage";
@@ -9,15 +8,15 @@ import AddStudentForm from "../routes/students/AddStudentForm";
 import StudentsPage from "../routes/students/StudentsPage";
 import Home from "./Home";
 import StudentProfile from "../routes/students/StudentProfile";
-import FileUpload from "../components/FileUpload";
 import StudentAssignmentProfile from "../routes/student_assignments/StudentAssignmentProfile";
+import Header from "./Header";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App mx-8 my-6 flex flex-col">
         <UserProvider>
-          <Navbar />
+          <Header />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route
