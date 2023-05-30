@@ -4,7 +4,7 @@ import SignOutLink from "../routes/auth/SignOutLink";
 import NavLink from "./NavLink";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ isNavOpen }) {
   const { user } = useContext(UserContext);
 
   const loggedInNavLinks = [
@@ -21,8 +21,12 @@ export default function Navbar() {
   const navLinks = user ? loggedInNavLinks : loggedOutNavLinks;
 
   return (
-    <nav className="flex justify-between py-2 mb-6 hidden lg:block">
-      <ul className="flex">
+    <nav
+      className={`flex flex-col lg:flex-row justify-between py-2 mb-6 ${
+        !isNavOpen && "hidden"
+      } lg:block`}
+    >
+      <ul className="flex flex-col items-center lg:flex-row lg:items-start">
         {navLinks.map((link, idx) => {
           const { path, linkName } = link;
           return (

@@ -3,7 +3,7 @@ import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import { addNewStudent } from "../../api/students";
-import SuccessMessage from "../../components/SuccessMessaga";
+import SuccessMessage from "../../components/SuccessMessage";
 
 export default function AddStudentForm() {
   const schoolYears = [
