@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useStudentAssignmentsList from "../../hooks/useStudentAssignments";
 import StudentAssignmentCell from "./StudentAssignmentCell";
 import NoDataMessage from "../../components/NoDataMessage";
+import SearchBar from "../../components/SearchBar";
+import { filterStudentAssignmentsByQuery } from "./utils";
 
 export default function StudentAssignmentsList({ studentId }) {
   const studentAssignmentsList = useStudentAssignmentsList();
@@ -10,12 +12,22 @@ export default function StudentAssignmentsList({ studentId }) {
     (studentAssignment) => studentAssignment.studentId === studentId
   );
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredStudentAssignments = filterStudentAssignmentsByQuery(
+    studentAssignments,
+    searchQuery
+  );
+
   return (
     <section>
       <h2 className="text-3xl mb-3">Graded Assignments</h2>
+      <SearchBar
+        changeHandler={(event) => setSearchQuery(event.target.value)}
+      />
       <ul>
-        {studentAssignments.length ? (
-          studentAssignments.map((studentAssignment) => (
+        {filteredStudentAssignments.length ? (
+          filteredStudentAssignments.map((studentAssignment) => (
             <StudentAssignmentCell
               key={studentAssignment.id}
               studentAssignment={studentAssignment}

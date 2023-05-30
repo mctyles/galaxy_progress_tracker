@@ -48,14 +48,14 @@ export default function FormModal({ form, title, description, buttonText }) {
                 "fixed z-50",
                 "w-[95vw] max-w-md rounded-lg p-4 md:w-full",
                 "top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
-                "bg-white dark:bg-gray-800",
+                "bg-slate-800 shadow-black shadow-lg",
                 "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
               )}
             >
-              <DialogPrimitive.Title className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <DialogPrimitive.Title className="text-sm sm:text-md md:text-lg lg:text-xl font-medium text-gray-900 dark:text-gray-100">
                 {title}
               </DialogPrimitive.Title>
-              <DialogPrimitive.Description className="mt-2 text-sm font-normal text-gray-700 dark:text-gray-400">
+              <DialogPrimitive.Description className="my-2  pb-2 border-b-2 text-sm sm:text-md md:text-lg lg:text-xl font-normal text-gray-700 dark:text-gray-400">
                 {description}
               </DialogPrimitive.Description>
               {form}
@@ -63,7 +63,7 @@ export default function FormModal({ form, title, description, buttonText }) {
                 <DialogPrimitive.Close
                   className={clsx(
                     "inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
-                    "bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-700 dark:text-gray-100 dark:hover:bg-purple-600",
+                    "bg-gradient-to-r text-white from-red-600/50 to-red-600/50 hover:scale-105",
                     "border border-transparent",
                     "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
                   )}

@@ -1,9 +1,9 @@
 import { useContext, useState, React, Fragment } from "react";
-import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import { addNewStudent } from "../../api/students";
+import SuccessMessage from "../../components/SuccessMessaga";
 
 export default function AddStudentForm() {
   const schoolYears = [
@@ -26,8 +26,6 @@ export default function AddStudentForm() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const { user } = useContext(UserContext);
-
-  const navigate = useNavigate();
 
   const handleFormSubmission = async (event) => {
     event.preventDefault();
@@ -70,7 +68,7 @@ export default function AddStudentForm() {
   return (
     <Fragment className="flex justify-center ">
       {submitSuccess ? (
-        <p>Student was successfully added!</p>
+        <SuccessMessage message="Student successfully added to roster!" />
       ) : (
         <form
           onSubmit={handleFormSubmission}

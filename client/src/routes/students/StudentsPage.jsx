@@ -7,14 +7,14 @@ export default function StudentsPage() {
   return (
     <main className="text-white">
       <h1 className="text-2xl text-slate-300 mb-4">Your Students</h1>
-      <section className="w-full flex flex-col content-center items-center">
+      <FormModal
+        form={<AddStudentForm />}
+        title="Add a Student To Roster"
+        description="Enter the student's information."
+        buttonText="Add New Student to Roster"
+      />
+      <section className="w-full flex flex-col content-center items-center my-3">
         <StudentDataTable />
-        <FormModal
-          form={<AddStudentForm />}
-          title="Add a Student To Roster"
-          description="Enter the student's information."
-          buttonText="Add New Student to Roster"
-        />
       </section>
     </main>
   );

@@ -6,7 +6,7 @@ export default function TableRow({ data }) {
 
   return (
     <tr
-      className="bg-slate-900 hover:bg-slate-700"
+      className="bg-slate-900 hover:bg-slate-700 hover:scale-105 hover:shadow-2xl"
       onClick={() => navigate(`${id}`)}
     >
       {data.map((element, idx) => {

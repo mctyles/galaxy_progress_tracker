@@ -6,7 +6,7 @@ export default function StudentAssignmentCell({ studentAssignment }) {
 
   return (
     <li
-      className="flex justify-between items-center list-none px-5 py-3 bg-slate-500 rounded-lg border border-black mb-3 hover:bg-slate-700"
+      className="flex justify-between items-center list-none px-5 py-3 rounded-lg border border-black mb-3 bg-slate-900 hover:bg-slate-700 hover:scale-105 hover:shadow-2xl"
       onClick={() => navigate(`assignments/${studentAssignment?.id}`)}
     >
       <p className="min-w-[10%]">{studentAssignment?.name}</p>

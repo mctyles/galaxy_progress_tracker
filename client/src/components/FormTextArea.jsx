@@ -5,14 +5,16 @@ export default function FormTextArea({
   changeHandler,
 }) {
   return (
-    <fieldset>
-      <label htmlFor={inputName}>{labelContent}</label>
+    <fieldset className="flex flex-col">
+      <label className="mb-2" htmlFor={inputName}>
+        {labelContent}
+      </label>
       <textarea
         id={inputName}
         name={inputName}
         value={inputValue}
         onChange={changeHandler}
-        className="text-black p-1 rounded"
+        className="text-black p-1 rounded-lg"
       />
     </fieldset>
   );

@@ -75,7 +75,9 @@ export default function UserAuthenticationForm() {
         changeHandler={(e) => setPassword(e.target.value)}
         isRequired={true}
       />
-      <Button type="submit" content="Submit" clickHandler={null} />
+      <section>
+        <Button type="submit" content="Submit" clickHandler={null} />
+      </section>
     </form>
   );
 }

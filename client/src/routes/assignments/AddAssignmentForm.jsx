@@ -1,11 +1,11 @@
 import { useContext, useState, React, Fragment } from "react";
-import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import useCategories from "../../hooks/useCategories";
 import { addNewAssignment } from "../../api/assignments";
 import Datepicker from "react-tailwindcss-datepicker";
+import SuccessMessage from "../../components/SuccessMessaga";
 
 export default function AddAssignmentForm() {
   const categories = useCategories();
@@ -53,9 +53,9 @@ export default function AddAssignmentForm() {
   };
 
   return (
-    <section className="flex justify-center">
+    <section className="flex justify-center text-white">
       {submitSuccess ? (
-        <p>Assignment successfully added!</p>
+        <SuccessMessage message="Assignment successfully added" />
       ) : (
         <form
           onSubmit={handleFormSubmission}
@@ -67,7 +67,7 @@ export default function AddAssignmentForm() {
             inputType="text"
             inputValue={name}
             changeHandler={handleNameChanged}
-            required={true}
+            isRequired={true}
           />
 
           <FormInput
@@ -76,14 +76,14 @@ export default function AddAssignmentForm() {
             inputType="text"
             inputValue={totalPoints}
             changeHandler={handleTotalPointsChanged}
-            required={false}
+            isRequired={false}
           />
 
           <label>Select Subject Category:</label>
           <select
             onChange={handleCategoryChanged}
             value={categoryId}
-            required={true}
+            isRequired={true}
             className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
           >
             {categories.map((category) => {
@@ -94,12 +94,15 @@ export default function AddAssignmentForm() {
               );
             })}
           </select>
+          <label>Select Date Assigned:</label>
           <Datepicker
             useRange={false}
             asSingle={true}
+            primaryColor={"sky"}
             value={dateAssigned}
             placeholder="Select date"
             onChange={(newValue) => setDateAssigned(newValue)}
+            inputClassName={"bg-white w-full rounded-lg p-3"}
           />
           <Button type="submit" content={"Submit"} clickHandler={null} />
         </form>

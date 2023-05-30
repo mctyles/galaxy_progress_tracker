@@ -33,10 +33,13 @@ export default function FileUpload({ setImageUrl }) {
   }
 
   return (
-    <fieldset className="text-white">
+    <fieldset className="text-white p-2 border rounded-lg">
       {errorMessage.length ? <ErrorMessage message={errorMessage} /> : null}
+      <label htmlFor="image" className="mb-2">
+        Upload Assignment Image:
+      </label>
       <input
-        className="mr-2"
+        className="mr-2 my-2"
         type="file"
         name="image"
         onChange={onFileChanged}

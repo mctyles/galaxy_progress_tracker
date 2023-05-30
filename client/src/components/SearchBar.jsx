@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function SearchBar({ value, changeHandler }) {
   return (
-    <fieldset className="w-full rounded-lg my-1 px-2 py-1 text-black flex bg-white items-center">
+    <fieldset className="w-full my-3 px-2 py-1 rounded-lg text-black flex bg-white items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -18,7 +18,7 @@ export default function SearchBar({ value, changeHandler }) {
         />
       </svg>
       <input
-        className="w-full p-1"
+        className="w-full p-1 border-l px-2 rounded"
         placeholder="Search"
         value={value}
         onChange={changeHandler}

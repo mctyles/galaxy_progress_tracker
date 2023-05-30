@@ -8,7 +8,9 @@ export default function FormInput({
 }) {
   return (
     <fieldset className="mb-3 flex flex-col">
-      <label htmlFor={inputName}>{labelContent}</label>
+      <label className="mb-2" htmlFor={inputName}>
+        {labelContent}
+      </label>
       <input
         id={inputName}
         name={inputName}

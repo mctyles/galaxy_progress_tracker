@@ -3,7 +3,7 @@ export default function Button({ type, content, clickHandler }) {
     <button
       type={type}
       onClick={clickHandler}
-      className="p-2 min-w-[25%] rounded border border-indigo-800 bg-indigo-200 text-black hover:bg-indigo-800 hover:text-white"
+      className="px-4 py-2 rounded-xl border border-indigo-800 bg-gradient-to-r from-blue-900 to-blue-700 text-white hover:bold hover:shadow-blue-900 hover:shadow-md hover:from-blue-700 hover:to-blue-600"
     >
       {content}
     </button>
