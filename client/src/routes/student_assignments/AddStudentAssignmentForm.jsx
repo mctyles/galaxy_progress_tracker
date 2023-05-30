@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import { addNewStudentAssignment } from "../../api/studentAssignments";
 import { UserContext } from "../../context/UserContext";
 import useStudentsList from "../../hooks/useStudentsList";
-import SuccessMessage from "../../components/SuccessMessaga";
+import SuccessMessage from "../../components/SuccessMessage";
 import ComboboxSelect from "../../components/ComboboxSelect";
 
 export default function AddStudentAssignmentForm({ student, assignment }) {

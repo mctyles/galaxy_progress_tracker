@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext";
 import useCategories from "../../hooks/useCategories";
 import { addNewAssignment } from "../../api/assignments";
 import Datepicker from "react-tailwindcss-datepicker";
-import SuccessMessage from "../../components/SuccessMessaga";
+import SuccessMessage from "../../components/SuccessMessage";
 
 export default function AddAssignmentForm() {
   const categories = useCategories();
