@@ -11,7 +11,10 @@ export default function TableRow({ data }) {
     >
       {data.map((element, idx) => {
         return (
-          <td className="p-3 text-center" key={idx}>
+          <td
+            className="p-3 text-center text-sm sm:text-md md:text-lg lg:text-xl"
+            key={idx}
+          >
             {element}
           </td>
         );

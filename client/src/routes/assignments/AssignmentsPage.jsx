@@ -5,7 +5,7 @@ import AssignmentDataTable from "./AssignmentDataTable";
 export default function AssignmentsPage() {
   return (
     <main className="text-white">
-      <h2 className="mb-6 text-lg sm:text-xl md:text-2xl">
+      <h2 className="text-2xl md:text-4xl text-slate-300 mb-6">
         Manage Assignments
       </h2>
       <FormModal

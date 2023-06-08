@@ -10,7 +10,7 @@ export default function SelectDropdown({
 }) {
   const [selected, setSelected] = useState(options[0]);
   return (
-    <div className={`mb-2 w-${dropdownWidth}`}>
+    <div className={`mb-2 w-1/2 md:w-1/3`}>
       <Listbox
         value={value}
         onChange={(value) => {
@@ -19,9 +19,9 @@ export default function SelectDropdown({
         }}
       >
         <div className="mt-1">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg text-black bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <Listbox.Button className="w-full flex justify-between cursor-default rounded-lg text-black bg-white py-2 pl-3 pr-2 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">{selected}</span>
-            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+            <span className="pointer-events-none flex items-center">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
@@ -34,7 +34,7 @@ export default function SelectDropdown({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-1/4 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute mt-1 max-h-60 w-1/2 md:w-1/3 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {options.map((option, optionIdx) => (
                 <Listbox.Option
                   key={optionIdx}

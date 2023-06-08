@@ -6,7 +6,9 @@ import AddStudentForm from "./AddStudentForm";
 export default function StudentsPage() {
   return (
     <main className="text-white">
-      <h1 className="text-2xl text-slate-300 mb-4">Your Students</h1>
+      <h2 className="text-2xl md:text-4xl text-slate-300 mb-4 mb-6">
+        Your Students
+      </h2>
       <FormModal
         form={<AddStudentForm />}
         title="Add a Student To Roster"

@@ -48,7 +48,7 @@ export default function FormModal({ form, title, description, buttonText }) {
                 "fixed z-50",
                 "w-[95vw] max-w-md rounded-lg p-4 md:w-full",
                 "top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
-                "bg-slate-800 shadow-black shadow-lg",
+                "bg-slate-900 shadow-black shadow-lg",
                 "focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
               )}
             >

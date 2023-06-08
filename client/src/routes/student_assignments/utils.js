@@ -18,3 +18,9 @@ export const filterStudentAssignmentsByQuery = (studentAssignments, query) => {
 
   return filteredStudentAssignments;
 };
+
+export const getEndingUrlValue = (imageUrl, dividingChar) => {
+  if (!imageUrl) return imageUrl;
+  const [value] = imageUrl.split(dividingChar).slice(-1);
+  return value;
+};

@@ -22,7 +22,7 @@ export default function Navbar({ isNavOpen }) {
 
   return (
     <nav
-      className={`flex flex-col lg:flex-row justify-between py-2 mb-6 ${
+      className={`flex flex-col lg:flex-row justify-between py-2  ${
         !isNavOpen && "hidden"
       } lg:block`}
     >

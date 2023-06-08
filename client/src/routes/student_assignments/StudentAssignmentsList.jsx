@@ -4,13 +4,19 @@ import StudentAssignmentCell from "./StudentAssignmentCell";
 import NoDataMessage from "../../components/NoDataMessage";
 import SearchBar from "../../components/SearchBar";
 import { filterStudentAssignmentsByQuery } from "./utils";
+import FormModal from "../../components/FormModal";
+import AddStudentAssignmentForm from "./AddStudentAssignmentForm";
+import useStudentsList from "../../hooks/useStudentsList";
 
 export default function StudentAssignmentsList({ studentId }) {
   const studentAssignmentsList = useStudentAssignmentsList();
+  const studentsList = useStudentsList();
 
   const studentAssignments = studentAssignmentsList.filter(
     (studentAssignment) => studentAssignment.studentId === studentId
   );
+
+  const student = studentsList.find((student) => student.id === studentId);
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -21,7 +27,15 @@ export default function StudentAssignmentsList({ studentId }) {
 
   return (
     <section>
-      <h2 className="text-3xl mb-3">Graded Assignments</h2>
+      <h2 className="text-2xl md:text-4xl text-slate-300 mb-4 mb-6">
+        Graded Assignments
+      </h2>
+      <FormModal
+        form={<AddStudentAssignmentForm student={student} />}
+        title="Add Graded Assignment"
+        description="Fill in the assignment information"
+        buttonText={`Add Graded Assignment for ${student?.firstName} ${student?.lastInitial}`}
+      />
       <SearchBar
         changeHandler={(event) => setSearchQuery(event.target.value)}
       />
