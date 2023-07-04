@@ -10,6 +10,7 @@ import Home from "./Home";
 import StudentProfile from "../routes/students/StudentProfile";
 import StudentAssignmentProfile from "../routes/student_assignments/StudentAssignmentProfile";
 import Header from "./Header";
+import AssignmentProfile from "../routes/assignments/AssignmentProfile";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
             <Route element={<StudentProfile />} path="me/students/:id" />
             <Route element={<AddStudentForm />} path="me/students/add" />
             <Route element={<AssignmentsPage />} path="me/assignments" />
+            <Route
+              element={<AssignmentProfile />}
+              path="me/assignments/:assignmentId"
+            />
             <Route element={<AddAssignmentForm />} path="me/assignments/add" />
             <Route
               element={<StudentAssignmentProfile />}

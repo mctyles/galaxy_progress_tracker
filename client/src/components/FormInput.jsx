@@ -7,7 +7,7 @@ export default function FormInput({
   isRequired = false,
 }) {
   return (
-    <fieldset className="mb-3 flex flex-col">
+    <fieldset className="mb-3 flex flex-col text-sm sm:text-md w-full">
       <label className="mb-2" htmlFor={inputName}>
         {labelContent}
       </label>

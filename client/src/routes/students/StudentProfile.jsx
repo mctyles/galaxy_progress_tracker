@@ -13,8 +13,8 @@ export default function StudentProfile() {
 
   return (
     <main className="text-white mx-5">
-      <header className="flex justify-between mb-6">
-        <div className="flex items-center">
+      <header className="flex flex-row justify-between mb-6">
+        <div className="flex items-center mb-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

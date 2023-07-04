@@ -5,7 +5,7 @@ export default function FormTextArea({
   changeHandler,
 }) {
   return (
-    <fieldset className="flex flex-col">
+    <fieldset className="flex flex-col w-full">
       <label className="mb-2" htmlFor={inputName}>
         {labelContent}
       </label>

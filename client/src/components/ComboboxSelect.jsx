@@ -30,7 +30,8 @@ export default function ComboboxSelect({ options, handleChange }) {
             <Combobox.Input
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(option) =>
-                option.name ?? `${option.firstName} ${option.lastInitial}`
+                option.name ??
+                `${option.firstName} ${option.lastInitial} (${option.schoolYear})`
               }
               onChange={(event) => setQuery(event.target.value)}
             />
@@ -72,7 +73,7 @@ export default function ComboboxSelect({ options, handleChange }) {
                           }`}
                         >
                           {option.name ??
-                            `${option.firstName} ${option.lastInitial}`}
+                            `${option.firstName} ${option.lastInitial} (${option.schoolYear})`}
                         </span>
                         {selected ? (
                           <span

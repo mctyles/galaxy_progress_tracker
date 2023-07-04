@@ -66,7 +66,7 @@ export default function AddStudentForm() {
   };
 
   return (
-    <Fragment className="flex justify-center ">
+    <section className="flex justify-center">
       {submitSuccess ? (
         <SuccessMessage message="Student successfully added to roster!" />
       ) : (
@@ -94,31 +94,34 @@ export default function AddStudentForm() {
 
           <FormInput
             inputName="reading_level"
-            labelContent="Reading Level"
+            labelContent="Reading Level:"
             inputType="text"
             inputValue={readingLevel}
             changeHandler={handleReadingLevelChanged}
           />
-
-          <label>Select School Year:</label>
-          <select
-            onChange={handleSchoolYearChanged}
-            value={schoolYear}
-            required={true}
-            className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
-          >
-            {schoolYears.map((year) => {
-              return (
-                <Fragment key={year}>
-                  <option>{year}</option>
-                </Fragment>
-              );
-            })}
-          </select>
+          <fieldset className="flex flex-col">
+            <label className="text-sm sm:text-md mb-2">
+              Select School Year:
+            </label>
+            <select
+              onChange={handleSchoolYearChanged}
+              value={schoolYear}
+              required={true}
+              className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
+            >
+              {schoolYears.map((year) => {
+                return (
+                  <Fragment key={year}>
+                    <option>{year}</option>
+                  </Fragment>
+                );
+              })}
+            </select>
+          </fieldset>
 
           <Button type="submit" content={"Submit"} clickHandler={null} />
         </form>
       )}
-    </Fragment>
+    </section>
   );
 }

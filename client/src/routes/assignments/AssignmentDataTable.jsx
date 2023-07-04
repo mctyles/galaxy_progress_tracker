@@ -9,12 +9,10 @@ export default function AssignmentDataTable() {
   const assignments = useAssignmentsList();
   const [searchQuery, setSearchQuery] = useState("");
 
-  console.log(assignments);
-
   const filteredAssignments = filterAssignments(searchQuery, assignments);
 
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex flex-col justify-center w-full">
       <SearchBar
         value={searchQuery}
         changeHandler={(event) => setSearchQuery(event.target.value)}

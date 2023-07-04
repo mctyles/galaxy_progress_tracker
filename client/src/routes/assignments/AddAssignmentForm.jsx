@@ -61,6 +61,18 @@ export default function AddAssignmentForm() {
           onSubmit={handleFormSubmission}
           className="flex flex-col gap-4 lg:max-w-xl grow"
         >
+          <fieldset className="flex flex-col text-sm sm:text-md">
+            <label className="mb-3">Select Date Assigned:</label>
+            <Datepicker
+              useRange={false}
+              asSingle={true}
+              primaryColor={"sky"}
+              value={dateAssigned}
+              placeholder="Select date"
+              onChange={(newValue) => setDateAssigned(newValue)}
+              inputClassName={"bg-white w-full rounded-lg p-3"}
+            />
+          </fieldset>
           <FormInput
             inputName="assignment_name"
             labelContent="Assignment Name:"
@@ -78,32 +90,23 @@ export default function AddAssignmentForm() {
             changeHandler={handleTotalPointsChanged}
             isRequired={false}
           />
-
-          <label>Select Subject Category:</label>
-          <select
-            onChange={handleCategoryChanged}
-            value={categoryId}
-            isRequired={true}
-            className="p-2 border-2 border-gray-700 rounded-md bg-gray-100 text-sm font-semibold text-gray-900"
-          >
-            {categories.map((category) => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-          </select>
-          <label>Select Date Assigned:</label>
-          <Datepicker
-            useRange={false}
-            asSingle={true}
-            primaryColor={"sky"}
-            value={dateAssigned}
-            placeholder="Select date"
-            onChange={(newValue) => setDateAssigned(newValue)}
-            inputClassName={"bg-white w-full rounded-lg p-3"}
-          />
+          <fieldset className="flex flex-col text-sm sm:text-md">
+            <label className="mb-2">Select Subject Category:</label>
+            <select
+              onChange={handleCategoryChanged}
+              value={categoryId}
+              isRequired={true}
+              className="py-3 px-2 border-2 border-gray-700 rounded-lg bg-gray-100 text-sm font-semibold text-gray-900"
+            >
+              {categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
+          </fieldset>
           <Button type="submit" content={"Submit"} clickHandler={null} />
         </form>
       )}

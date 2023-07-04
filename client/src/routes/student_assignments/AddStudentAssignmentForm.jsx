@@ -9,6 +9,7 @@ import { UserContext } from "../../context/UserContext";
 import useStudentsList from "../../hooks/useStudentsList";
 import SuccessMessage from "../../components/SuccessMessage";
 import ComboboxSelect from "../../components/ComboboxSelect";
+import useStudentAssignmentsList from "../../hooks/useStudentAssignments";
 
 export default function AddStudentAssignmentForm({ student, assignment }) {
   const assignments = useAssignmentsList();
@@ -43,11 +44,6 @@ export default function AddStudentAssignmentForm({ student, assignment }) {
     }
   };
 
-  const handleAssignmentChanged = (event) => {
-    const selectedAssignmentId = event.target.value;
-    setAssignmentId(selectedAssignmentId);
-  };
-
   const handleEarnedPointsChanged = (event) => {
     const enteredEarnedPoints = event.target.value;
     setEarnedPoints(enteredEarnedPoints);
@@ -65,10 +61,10 @@ export default function AddStudentAssignmentForm({ student, assignment }) {
       ) : (
         <form
           onSubmit={handleFormSubmission}
-          className="flex flex-col gap-4 lg:max-w-xl grow"
+          className="flex flex-col gap-4 lg:max-w-xl min-w-0"
         >
           {student && (
-            <fieldset>
+            <fieldset className="text-sm sm:text-md w-full" required={true}>
               <label>Select Assignment:</label>
               <ComboboxSelect
                 options={assignments}
