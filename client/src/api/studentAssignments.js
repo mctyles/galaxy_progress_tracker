@@ -24,6 +24,8 @@ export async function addNewStudentAssignment(token, studentAssignmentData) {
     const { data } = response;
     return data;
   } catch (error) {
-    console.error(error);
+    return {
+      error: error.response,
+    };
   }
 }

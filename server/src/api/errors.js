@@ -75,6 +75,13 @@ function addStudentAssignmentError() {
   };
 }
 
+function studentAssignmentAlreadyExistsError() {
+  return {
+    name: "studentAssignmentAlreadyExistsError",
+    message: "This graded assignment has already been added for this student.",
+  };
+}
+
 function getUploadUrlError() {
   return {
     name: "getUploadUrlError",
@@ -94,5 +101,6 @@ module.exports = {
   fetchCategoriesError,
   fetchStudentsAssignmentsError,
   addStudentAssignmentError,
+  studentAssignmentAlreadyExistsError,
   getUploadUrlError,
 };

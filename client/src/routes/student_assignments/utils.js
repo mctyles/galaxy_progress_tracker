@@ -1,3 +1,5 @@
+import { addNewStudentAssignment } from "../../api/studentAssignments";
+
 export const colorCategory = {
   Art: "bg-gradient-to-r from-red-800 to-red-500",
   ELA: "bg-gradient-to-r from-blue-800 to-blue-500",
@@ -23,4 +25,36 @@ export const getEndingUrlValue = (imageUrl, dividingChar) => {
   if (!imageUrl) return imageUrl;
   const [value] = imageUrl.split(dividingChar).slice(-1);
   return value;
+};
+
+export const handleFormSubmission = async (event) => {
+  event.preventDefault();
+
+  const studentAssignment = await addNewStudentAssignment(user?.token, {
+    earnedPoints,
+    imageUrl,
+    notes: assignmentNotes,
+    studentId,
+    assignmentId,
+  });
+
+  if (studentAssignment?.error) {
+    setErrorMessage(studentAssignment?.error.data.message);
+    return;
+  }
+
+  if (studentAssignment) {
+    setSubmitSuccess(true);
+    navigate(0);
+  }
+};
+
+export const handleEarnedPointsChanged = (event) => {
+  const enteredEarnedPoints = event.target.value;
+  setEarnedPoints(enteredEarnedPoints);
+};
+
+export const handleNotesChanged = (event) => {
+  const notes = event.target.value;
+  setAssignmentNotes(notes);
 };

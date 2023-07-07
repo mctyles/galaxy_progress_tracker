@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import useStudentsList from "../../hooks/useStudentsList";
 import ReadingLevelCard from "./ReadingLevelCard";
-import FormModal from "../../components/FormModal";
-import AddStudentAssignmentForm from "../student_assignments/AddStudentAssignmentForm";
 import StudentAssignmentsList from "../student_assignments/StudentAssignmentsList";
 
 export default function StudentProfile() {
@@ -12,7 +10,7 @@ export default function StudentProfile() {
   const student = students.find((student) => student.id === Number(id));
 
   return (
-    <main className="text-white mx-5">
+    <main className="text-white md:mx-5">
       <header className="flex flex-row justify-between mb-6">
         <div className="flex items-center mb-5">
           <svg

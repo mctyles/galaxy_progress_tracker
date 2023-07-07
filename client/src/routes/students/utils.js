@@ -32,4 +32,15 @@ export function getSchoolYearList(students) {
   return [...set, "All"];
 }
 
-export function handleSearchQueryChange(query, students) {}
+export const schoolYears = [
+  "2022-23",
+  "2023-24",
+  "2024-25",
+  "2025-26",
+  "2026-27",
+  "2027-28",
+  "2028-29",
+  "2029-30",
+  "2030-31",
+  "2031-32",
+];

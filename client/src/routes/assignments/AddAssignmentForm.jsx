@@ -6,9 +6,11 @@ import useCategories from "../../hooks/useCategories";
 import { addNewAssignment } from "../../api/assignments";
 import Datepicker from "react-tailwindcss-datepicker";
 import SuccessMessage from "../../components/SuccessMessage";
+import { useNavigate } from "react-router-dom";
 
 export default function AddAssignmentForm() {
   const categories = useCategories();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [totalPoints, setTotalPoints] = useState(0);
@@ -34,6 +36,7 @@ export default function AddAssignmentForm() {
 
     if (assignment) {
       setSubmitSuccess(true);
+      navigate(0);
     }
   };
 

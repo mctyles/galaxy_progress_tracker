@@ -4,21 +4,10 @@ import Button from "../../components/Button";
 import { UserContext } from "../../context/UserContext";
 import { addNewStudent } from "../../api/students";
 import SuccessMessage from "../../components/SuccessMessage";
+import { schoolYears } from "./utils";
+import { useNavigate } from "react-router-dom";
 
 export default function AddStudentForm() {
-  const schoolYears = [
-    "2022-23",
-    "2023-24",
-    "2024-25",
-    "2025-26",
-    "2026-27",
-    "2027-28",
-    "2028-29",
-    "2029-30",
-    "2030-31",
-    "2031-32",
-  ];
-
   const [firstName, setFirstName] = useState("");
   const [lastInitial, setLastInitial] = useState("");
   const [readingLevel, setReadingLevel] = useState("");
@@ -26,6 +15,7 @@ export default function AddStudentForm() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const { user } = useContext(UserContext);
+  const navigate = useNavigate(0);
 
   const handleFormSubmission = async (event) => {
     event.preventDefault();
@@ -38,10 +28,9 @@ export default function AddStudentForm() {
       teacherId: user?.user.id,
     });
 
-    console.log(addedStudent);
-
     if (addedStudent) {
       setSubmitSuccess(true);
+      navigate(0);
     }
   };
 

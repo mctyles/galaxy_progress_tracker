@@ -22,19 +22,22 @@ async function getAllStudentAssignmentsByTeacher(teacherId) {
 }
 
 async function getAssignmentByIds(studentId, assignmentId) {
-  const { rows: studentAssignments } = await client.query(
+  const {
+    rows: [studentAssignment],
+  } = await client.query(
     `
       SELECT assignments.name, assignments."totalPoints", assignments."dateAssigned", categories.name AS category, assignments."teacherId", student_assignments.* FROM assignments
       JOIN categories 
       ON categories.id = assignments."categoryId"
+      JOIN student_assignments
       ON assignments.id = student_assignments."assignmentId"
       JOIN students
       ON student_assignments."studentId" = students.id
-      WHERE students.id = $1 AND assigments.id = $2;`,
+      WHERE students.id = $1 AND assignments.id = $2;`,
     [studentId, assignmentId]
   );
 
-  return studentAssignments;
+  return studentAssignment;
 }
 
 async function createStudentAssignment(studentAssignmentObj) {
