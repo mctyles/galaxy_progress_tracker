@@ -2,7 +2,7 @@
   "name": "galaxy-progress-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "client/src/application/main.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-server": "npm install --prefix server",
@@ -10,7 +10,7 @@
     "install": "npm run install-server && npm run install-client",
     "seed": "npm run seed --prefix server",
     "server": "npm run start --prefix server",
-    "client": "npm run start --prefix client",
+    "client": "npm run preview --prefix client",
     "start": "npm run server & npm run client",
     "deploy": "npm run build --prefix client && npm start --prefix server"
   },
