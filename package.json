@@ -5,7 +5,7 @@
   "main": "client/src/application/main.jsx",
   "scripts": {
     "install-server": "npm install --prefix server",
-    "seed": "npm run install-server && npm run seed --prefix server",
+    "seed": "npm run seed --prefix server",
     "start": "npm run install-server && npm run start --prefix server && npm run seed"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.1"
   }
 }
