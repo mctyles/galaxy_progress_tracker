@@ -6,7 +6,7 @@
   "scripts": {
     "install-server": "npm install --prefix server",
     "seed": "npm run seed --prefix server",
-    "start": "npm run install-server && npm run start --prefix server"
+    "start": "npm run install-server && npm run start --prefix server && npm run seed"
   },
   "repository": {
     "type": "git",

@@ -1,27 +1,28 @@
 import axios from "axios";
 
-const DEV_API_URL = "http://localhost:4000/api";
+const API_URL =
+  "https://galaxy-progress-tracker-468e7253b50a.herokuapp.com/api";
 
 export const usersController = axios.create({
-  baseURL: DEV_API_URL + "/users",
+  baseURL: API_URL + "/users",
 });
 
 export const studentsController = axios.create({
-  baseURL: DEV_API_URL + "/students",
+  baseURL: API_URL + "/students",
 });
 
 export const assignmentsController = axios.create({
-  baseURL: DEV_API_URL + "/assignments",
+  baseURL: API_URL + "/assignments",
 });
 
 export const categoriesController = axios.create({
-  baseURL: DEV_API_URL + "/categories",
+  baseURL: API_URL + "/categories",
 });
 
 export const studentAssignmentsController = axios.create({
-  baseURL: DEV_API_URL + "/student_assignments",
+  baseURL: API_URL + "/student_assignments",
 });
 
 export const s3URLController = axios.create({
-  baseURL: DEV_API_URL + "/s3url",
+  baseURL: API_URL + "/s3url",
 });
