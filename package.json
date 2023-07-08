@@ -5,7 +5,7 @@
   "main": "client/src/application/main.jsx",
   "scripts": {
     "install-server": "npm install --prefix server",
-    "seed": "npm run seed --prefix server",
+    "seed": "npm run install-server && npm run seed --prefix server",
     "start": "npm run install-server && npm run start --prefix server && npm run seed"
   },
   "repository": {
