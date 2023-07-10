@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { UserProvider } from "../context/UserContext";
 import AddAssignmentForm from "../routes/assignments/AddAssignmentForm";
@@ -11,12 +11,17 @@ import StudentProfile from "../routes/students/StudentProfile";
 import StudentAssignmentProfile from "../routes/student_assignments/StudentAssignmentProfile";
 import Header from "./Header";
 import AssignmentProfile from "../routes/assignments/AssignmentProfile";
+import Loading from "../components/Loading";
+import { StateContext, StateProvider } from "../context/StateContext";
 
 function App() {
+  const { isLoading } = useContext(StateContext);
+
   return (
     <BrowserRouter>
       <div className="App mx-8 my-6 flex flex-col">
         <UserProvider>
+          {isLoading && <Loading />}
           <Header />
           <Routes>
             <Route element={<Home />} path="/" />

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 export default function TableRow({ data }) {
   const navigate = useNavigate();
   const id = data[0];
-  console.log(data);
 
   return (
     <tr
